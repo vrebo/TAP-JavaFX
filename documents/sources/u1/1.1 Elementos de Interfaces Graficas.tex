@@ -1,0 +1,244 @@
+\documentclass[12pt,letterpaper]{book}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{courier}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{B36B00}
+
+%	Ubica el pie de tabla en la parte inferior
+\captionsetup[table]{position=bottom}
+%	Cambia los margenes del documento
+\geometry{left=25mm,top=20mm,right=25mm}
+%	Modifica el formato del comando \section
+\titleformat{\section}{\large\bfseries\raggedleft}{Lección \thesection}{1em}{}[{\titlerule[0.8pt]}]
+%	Modifica el comando \chapter
+\addto\captionsspanish{\renewcommand{\chaptername}{Unidad}}
+
+%	Modifica el encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\chaptername : Elementos de Interfaces Gráficas}
+\lhead{Tópicos Avanzados de Programación}
+\rfoot{Página \thepage}
+\lfoot{Rafael Rivera López}
+
+%	Agrega espaciado en el interior del las filas de las tablas
+\renewcommand{\arraystretch}{1.5}
+
+%Para cambiar el grosor de la línea de encabezado o pie de página
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand{\lstlistingname}{Código}
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ }
+}
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+
+\begin{document}
+\chapter{Elementos de Interfaces Gráficas}
+\section{Elementos de una Interfaz Gráfica}
+
+Una Interfaz Gráfica de Usuario (GUI, Graphical User Interface) es el conjunto de componentes gráficos que posibilitan la interacción entre el usuario y la aplicación: ventanas, botones, listas, listas desplegables, cajas de diálogo, campos de texto, etc.\\
+
+Desde el punto de vista de Java, toda interfaz gráfica tiene:
+
+\begin{itemize} \itemsep0em
+\item \textbf{Componentes:} Objetos que representan un elemento gráfico (botón, cuadro de texto).
+\item \textbf{Contenedores:} Objetos que contienen componentes (Ventanas, Cuadros de Dialogo).
+\item \textbf{Administradores de diseño:} Objetos que controlan la forma en que se ubican los componentes dentro de un contenedor.
+\item \textbf{Contexto Gráfico:} Área de un componente gráfico donde se pueden dibujar primitivas gráficas (líneas, curvas) y colocar imágenes.
+\item \textbf{Eventos:} Objetos que representan un cambio en un componente, generalmente producido por el usuario al realizar alguna operación.
+\end{itemize}
+
+\subsection{Componentes gráficos}
+ 
+Un componente es un objeto que tiene una representación gráfica que puede ser presentada en una pantalla y puede interactuar con el usuario. La clase abstracta Control contiene los métodos comunes para todos los componentes gráficos.\\
+
+\begin{table}[!hbtp] \footnotesize \centering
+\caption{Métodos más utilizados en un componente gráfico}
+	\begin{tabular}{l  l} \toprule[1.5pt]
+	\textbf{Método} 				& \textbf{Descripción}\\ \midrule[1.5pt]
+	setBackground(Background b) 	& Define fondo, color o imagen, del componente. \\ \hline
+	setCursor(Cursor c) 			& Define el cursor a mostrar sobre el componente. \\ \hline
+	setBorder(Border b) 			& Define los bordes del componente.\\ \bottomrule[1.5pt]
+	\end{tabular}
+\end{table}
+
+
+Los desarrolladores cuentan con tres alternativas de herramientas para construir interfaces gráficas en Java. La más antigua, AWT; la más utilizada y con el mayor tiempo en la preferencia de los desarrolladores, SWING; y la más reciente, JavaFX, que tiene cambios importantes en el paradigma de construcción de interfaces.\\
+
+A continuación se presentan componentes de las tres alternativas.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.9]{images/componentes-awt}}
+\caption{Algunos componentes de AWT}
+\end{figure}
+ 
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.8]{images/componentes-swing}}
+\caption{Algunos componentes de Swing}
+\end{figure}
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.8]{images/componentes-jfx}}
+\caption{Algunos componentes de JavaFX}
+\end{figure}
+
+\subsection{Contenedores gráficos}
+
+Un contenedor es un componente gráfico que tiene la capacidad de almacenar otros componentes gráficos.
+
+\begin{table}[!hbtp] \footnotesize \centering
+	\caption{Métodos más utilizados en contenedores}
+	\begin{tabular}{l l} \toprule[1.5pt]
+	\textbf{Método} 		& \textbf{Descripción}\\ \midrule[1.5pt]
+	setScene(Scene value) 	& Define la escena que se mostrará en el contenedor. \\ \hline
+	show() 					& Hace visible el contenedor. \\ \hline
+	sizeToScene() 			& Redimensiona el contenedor al tamaño de su contenido.\\ \bottomrule[1.5pt]
+	\end{tabular}
+\end{table}
+
+
+\subsection{Administradores de diseño}
+
+Un administrador de diseño (layout) es un objeto que se encarga de controlar la ubicación y distribución de los componentes dentro de un contenedor. Un layout se considera otro nodo dentro del grafo de escena de una interfaz gráfica, y más que modificar el comportamiento de los contenedores principales son contenedores en sí.
+
+\newpage
+\subsection{Diseño de una interfaz gráfica}
+
+Una interfaz gráfica común tiene los siguientes elementos:
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.6]{images/interfaz-tipica}}
+\caption{Elementos comunes de una interfaz gráfica de usuario}
+\end{figure}
+
+El diseño de una interfaz gráfica debe ser jerárquico. La ventana estará construida por los siguientes elementos:
+
+\begin{itemize} \itemsep0em
+\item Una barra de menú (opcional).
+\item Un contenedor gráfico para los componentes que definen la interfaz gráfica.
+\item Un objeto que maneje los eventos de la interfaz.
+\end{itemize}
+
+\begin{figure}[!htbp] \centering 
+\fbox{\includegraphics[scale=0.47]{images/gui-general}}
+\caption{Estructura general de una interfaz gráfica de usuario}
+\end{figure}
+
+\subsubsection{Barra de Menú}
+
+Es un área de la interfaz de usuario que indica y presenta las opciones o herramientas de una aplicación dispuestas en menús desplegables.
+En la mayoría de entornos de escritorio los diferentes menús presentes en estas barras pueden ser desplegados por medio de atajos de teclado, al mantener presionada la tecla ALT y la tecla correspondiente a la letra subrayada en la barra de menú.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.8]{images/barra-menu}}
+\caption{Ejemplo de una barra de menú y varias opciones de menú}
+\end{figure}
+
+\subsubsection{Contenedor gráfico}
+
+Define el área donde se construirá la interfaz gráfica. Este contenedor sirve como organizador de los componentes gráficos.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.9]{images/contenedor}}
+\caption{Ejemplo de un contenedor con varios componentes gráficos}
+\end{figure}
+
+\subsubsection{Manejador de Eventos}
+
+Cuando un usuario utiliza una interfaz gráfica, realiza cambios sobre los componentes (pulsa un botón, captura sobre un campo, etc). Estos cambios se reflejan en objetos denominados eventos.
+
+Los eventos deben ser atendidos para que la interfaz tenga el comportamiento esperado por el usuario, por lo cual toda interfaz gráfica debe utilizar un elemento manejador de eventos.
+
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.8]{images/eventos}}
+\caption{Ejemplo de un manejo de evento. Al oprimir el botón, se despliega una ventana de diálogo}
+\end{figure}
+
+\subsubsection{Estructura de clases para una interfaz gráfica}
+
+En este curso, cada aplicación gráfica estará diseñada dentro de un paquete, y tendrá una clase aplicación (donde se define el método main), y una o varias clases instanciables que definen los menús, los contenedores y los demás elementos necesarios para la interfaz.\\
+
+La clase aplicación creará una instancia del \textbf{contenedor principal} (la ventana), definirá su configuración (tamaño, ubicación), le asignará la barra de menú correspondiente (si esta existe) y el contenedor para los componentes gráficos. Esta clase también creará los objetos que atenderán los eventos producidos en la aplicación para el comportamiento adecuado de esta.\\
+
+\begin{lstlisting}[caption=Creación de una ventana simple]  % Start your code-block
+
+import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+
+public class Ventana extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        Parent root = new Pane();
+        Scene scene = new Scene(root);
+        
+        primaryStage.setTitle("Ejemplo de Ventana");
+        primaryStage.setScene(scene);
+        primaryStage.setWidth(400);
+        primaryStage.setHeight(300);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+\end{lstlisting}
+
+\end{document}

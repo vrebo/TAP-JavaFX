@@ -1,0 +1,411 @@
+\documentclass[12pt,letterpaper]{book}
+
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{caption}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+\author{Victor Daniel Rebolloso Degante}
+\title{Desarrollo  de Aplicaciones con JavaFX}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{B36B00}
+
+\geometry{left=23mm,top=20mm,right=23mm}
+
+
+% MODIFICACIONES AL FORMATO DE LAS PÁGINAS --------------------------
+%Para cambiar el grosor de la línea de encabezado o pie de página
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand\thesection{\Roman{section}}
+
+%	Modifica el formato del comando \section
+\titleformat{\section}{\large\bfseries\raggedleft}{Lección \thesection}{1em}{}[{\titlerule[0.8pt]}]
+%	Modifica el comando \chapter
+%\addto\captionsspanish{\renewcommand{\chaptername}{}}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\chaptername : Introducción}
+\lhead{Tópicos Avanzados de Programación}
+\rfoot{Página \thepage}
+\lfoot{Rafael Rivera López}
+% ------------------------------------------------------------------
+
+% MODIFICACIONES AL AMBIENTE LISTINGS-------------------------------
+\newlength\listingnumberwidth
+\setlength\listingnumberwidth{\widthof{00} + 1em}
+\renewcommand{\lstlistingname}{Código}
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ }
+}
+
+% ------------------------------------------------------------------
+
+%	Agrega espaciado en el interior del las filas de las tablas
+\renewcommand{\arraystretch}{1.5}
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Introducción a JavaFX}
+
+JavaFX es el sucesor de Swing como toolkit en la creación de interfaces gráficas para aplicaciones de escritorio escritas en lenguaje Java. Su última versión, JavaFX 8, es distribuida junto al Java Development Kit y Java Runtime Enviroment. Incluye APIs para dibujo de primitivas gráficas en 2D, construcción y renderizado de figuras 3D, y manejo de archivos multimedia por mencionar algunas. También posee un basto conjunto de componentes (botones, tablas, listas, etc) para la creación de interfaces gráficas.
+
+Además, la última versión integra el uso de estándares web para la personalización de la apariencia de los componentes gráficos, separando el diseño y la programación de la lógica de negocios de las aplicaciones.
+
+Actualmente, Oracle está desarrolla y soporta JavaFX, y desde 2011 se volvió una tecnología Open Source.
+
+\section*{Evolución de GUI Toolkits}
+
+Con el pasar del tiempo la necesidad de interfaces usuario-sistema ha evolucionado. Antaño, bastaba con interfaces que permitieran la comunicación mediante comandos, esto es comprensible debido a que los sistemas estaban destinados a ser usados por un público delimitado y para propósitos muy específicos. Actualmente, las computadoras para uso personal son algo cotidiano por lo que una aplicación que pretenda ser bien recibida por un amplio público necesita una interfaz con controles gráficos que simplifiquen su uso. Para tal propósito, las diferentes compañías que han estado a cargo del desarrollo de Java han equipado al Java Development Kit con distintas GUI Toolkits desde la segunda versión del lenguaje.
+
+En esta sección se presenta un recuento muy condensado de las GUI Tookits que han acompañado al lenguaje Java a lo largo de su historia previo a la llegada de JavaFX. También se mencionan otras toolkits para Java desarrolladas por terceros y se presenta el caso particular de Adobe Flex para Adobe Flash con el propósito de tener una base comparativa más completa para contrastar con JavaFX.
+
+La figura \ref{img:gui-evolucion} muestra una red de la evolución de las GUI toolkits de Java y su relación con otras tecnologías.
+
+\begin{figure}[!htbp] \centering
+\fbox{\includegraphics[width=0.8\textwidth]{images/gui-evolution}}
+\caption{Evolución de las herramientas de creación de interfaces gráficas.}
+\label{img:gui-evolucion}
+\end{figure}
+
+
+\subsection*{Abstract Window Toolkit (AWT) - 1996}
+
+\begin{itemize}	\itemsep0em
+\item Primera toolkit para la creación de interfaces gráficas con Java.
+\item El renderizado de los componentes gráficos era realizado por el sistema operativo.
+\item Sus componentes gráficos se consideran componentes pesados pues al crearse un componente en código Java también se creaba un componente gráfico nativo por el sistema operativo.
+\item Apariencia (Look and Feel) variable dependiendo de la plataforma en que corriera la aplicación.
+\item Conjunto de componentes limitado a los componentes estándar admitidos por las diversas plataformas.
+\end{itemize}
+
+\subsection*{Internet Foundation Classes (IFC) - 1996}
+
+\begin{itemize} \itemsep0em
+\item Desarrollado por Netscape.
+\item Primera UI toolkit independiente de plataforma. 
+\item El renderizado de los componentes era realizado por Java, no el SO.
+\item Soporte para Applets en el navegador Netscape.
+\end{itemize}
+
+\subsection*{Java Foundation Classes (JFC) - 1998}
+
+\begin{itemize} \itemsep0em
+\item Es resultado de la integración de IFC en Java.
+\item Da soporte para AWT.
+\item Contiene la Java2D API para el dibujo de primitivas gráficas.
+\item Se incluye Swing como nueva UI toolkit.
+\begin{itemize}
+\item Amplio conjunto de componentes gráficos.
+\item Componentes construidos con la arquitectura Modelo Vista Controlador.
+\item Componentes ligeros pues Java se encarga completamente del renderizado.
+\item Provee un API para la configuración del LAF de los componentes.
+\end{itemize}
+
+\end{itemize}
+
+\subsection*{Java Foundation Classes (JFC) - 1998}
+
+\begin{itemize}\itemsep0em
+\item Es resultado de la integración de IFC en Java.
+\item Da soporte para AWT.
+\item Contiene la Java2D API para el dibujo de primitivas gráficas.
+\item Se incluye Swing como nueva UI toolkit.
+	\begin{itemize}
+	\item Amplio conjunto de componentes gráficos.
+	\item Componentes construidos con la arquitectura Modelo Vista Controlador.
+	\item Componentes ligeros pues Java se encarga completamente del renderizado.
+	\item Provee un API para la configuración del LAF de los componentes.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Standard Widget Toolkit (SWT) - 1998}
+
+\begin{itemize} \itemsep0em
+\item Desarrollado por la Eclipse Foundation.
+\item Está basado en el IBM Common Widget Toolkit para el lenguaje SmallTalk.
+\item Posee un Look and Feel y desempeño nativo.
+\item Tal como lo hace AWT, SWT provee envolvedores al rededor de componentes nativos del SO.
+\item Los componentes que no son soportados por el SO son emulados con Java, similar al modo de Swing.
+\end{itemize}
+
+\subsection*{JavaFX 1.X - 2008}
+
+\begin{itemize} \itemsep0em
+\item Derivado del proyecto F3 se crea la primera versión de JavaFX.
+\item Desarrollado con el propósito de facilitar la creación de Rich Internet Applications.
+\item Incluye JavaFX Script, un lenguaje declarativo para definir interfaces gráficas.
+\item Facilita la creación de aplicaciones para las siguientes plataformas:
+	\begin{itemize} \itemsep0em
+	\item Escritorio
+	\item Móviles
+	\item Web
+	\item Televisores
+	\item Blu-ray 
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Apache Flex Spark- 2010}
+
+\begin{itemize} \itemsep0em
+\item Framework para la creación de clientes enriquecidos en lenguaje ActionScript (Flash).
+\item Posee la librería MXLM que hace uso de un archivo en formato XML para la definición de interfaces gráficas.
+\item Similar a MVC separa la vista en los archivos MXML y los controladores y modelos en código ActionScript.
+\item Soporta efectos y animaciones para los componentes de la interfaz.
+\end{itemize}
+
+\subsection*{JavaFX 2.X - 2011}
+
+\begin{itemize} \itemsep0em
+\item Finalizó el soporte a JavaFX Script, en su lugar se permite la creación de interfaces gráficas mediante APIs de Java y el uso de ficheros FXML.
+\item Se incluyó la capacidad de realizar animaciones, transformaciones y efectos en componentes de la interfaz gráfica.
+\item Fue añadida la interoperabilidad con Swing.
+\item Integración de un componente web que permite tener contenido HTML y ejecutar código JavaScript de forma embebida.
+\end{itemize}
+
+\subsection*{JavaFX 8 - 2014}
+
+\begin{itemize} \itemsep0em
+\item Soporte nativo para gráficas 3D.
+\item Soporte para uso de sensores.
+\item Versión incluida dentro de la edición estándar de Java.
+\item Fue añadida API para impresión.
+\item Nuevo conjunto de componentes gráficos añadidos.
+\end{itemize}
+
+
+\section*{Ventajas de JavaFX}
+
+Debido a su trayectoria histórica, JavaFX es el resultado de incorporar aquellos aspectos de provecho de sus predecesores y algunas virtudes de herramientas de GUI de otras tecnologías. 
+
+Partiendo del uso de una arquitectura MVC para la construcción de sus componentes gráficos podemos observar el panorama de ventajas que posee. Gracias a esta división entre la lógica y la presentación, se obtiene el benefició de mantenibilidad de las aplicaciones y se agiliza su desarrollo. La unión de la arquitectura MVC, el uso de archivos FXML en la definición de interfaces, la incorporación de hojas de estilo CSS para la personalización de la presentación de los componentes y las APIs para el empleo de archivos multimedia dota al desarrollador con la capacidad de crear interfaces que mejoren la experiencia del usuario.
+
+Haciendo una comparativa con su predecesor Swing, JavaFX es superior en los siguientes aspectos.
+\begin{description} \itemsep0em
+\item[Recursos:] La cantidad de recursos requeridos para la ejecución de aplicaciones es menor debido a la incorporación de estrategias de optimización durante el renderizado.
+\item[Componentes:] Tiene un conjunto de componentes gráficos y layouts más diverso y actualizado.
+\item[Usabilidad:] Gracias a FXML, JavaFX simplifica cosas que con Swing y Java2D serían complejas de realizar.
+\item[3D:] Da soporte a gráficas en 3D sin necesidad de alguna otra librería.
+\end{description}
+
+Por último, hay que recalcar que JavaFX es compatible completamente con JSE permitiendo al desarrollador usar todas aquellas APIs con las que está familiarizado.
+
+\section*{Arquitectura de JavaFX}
+
+JavaFX posee una arquitectura compuesta de varios elementos, la figura \ref{img:javafx-architecture} muestra su esquema arquitectónico.
+Algunos autores dividen su arquitectura simplemente en bloques y otros en capas, aquí se presenta la división en capas.
+
+\begin{figure}[!htbp] \centering
+\fbox{\includegraphics[width=0.9\textwidth]{images/javafx-architecture.png}}
+\caption{Arquitectura de JavaFX}
+\label{img:javafx-architecture}
+\end{figure}
+
+\subsection*{Las Tres Capas}
+
+La capa nativa es la capa inferior de la arquitectura. Se compone (en su mayoría) de librerías no escritas en Java que dan acceso a la capa nativa del SO; entre estas librerías se encuentran D3D y OpenGL que son implementaciones de Prism, una tecnología para el renderizado mediante hardware o software de componentes gráficos. 
+
+También se incluyen motores para contenido web y multimedia, estos motores permiten embeber páginas HTML que hagan uso de CSS y JavaScript dentro de aplicaciones de JavaFX así como vídeos y música que enriquezca la experiencia del usuario. Otro componente de esta capa es el Glass Window Toolkit; este componente es el más bajo en el stack gráfico de JavaFX, entre otras cosas su principal función es proveer servicios operativos nativos como la administración de ventanas, temporizadores, superficies y la cola de eventos. 
+
+Debido a que los componentes nativos son específicos para cada SO algunas características de la capa nativa están condicionadas a la disponibilidad de estos componentes en la plataforma. Se puede comprobar la disponibilidad de estas características mediante código. 
+
+\begin{lstlisting}[frame=single]
+// Enumerado con todas las caracteristicas opcionales.
+javafx.application.ConditionalFeature;
+
+// Metodo que comprueba si una caracteristica es soportada.
+Platform.isSupported(...);
+\end{lstlisting}
+
+En la capa privada se encuentra el sistema gráfico de JavaFX. Dos aceleradores forman este sistema: el primero es Prism, que como se mencionó antes, es encargado de los trabajos de renderizado vía hardware y software de las escenas de JavaFX; el segundo es el Quantum Toolkit cuya tarea es ligar Prism con el Glass Windowing Toolkit y hacerlos disponibles para la capa superior.
+
+La capa pública es la más importante para el desarrollador, en ella se encuentran las APIs necesarias para el desarrollo de aplicaciones. En este mismo nivel se incluye el Scene Graph como método de construcción/representación de las interfaces gráficas de usuario. La tabla \ref{table:javafx-apis} lista todos los paquetes de la API pública y da una breve descripción de cada uno.
+\\
+\begin{table} \footnotesize \centering
+	\caption{Paquetes provistos en la API pública de JavaFX}
+	\label{table:javafx-apis}
+    \begin{tabular}{l p{0.1cm} p{12cm}}
+    \toprule[1.5pt]
+   	\textbf{Paquete} 		& & \textbf{Descripción} \\
+    \midrule[1.5pt]
+	javafx.animation 		& & Contiene clases para el uso de animaciones basadas en transiciones \\ \hline
+	javafx.application 		& & Provee las clases del ciclo de vida de la aplicación \\ \hline
+	javafx.beans 			& & Contiene las clases que definen las API para hacer las propiedades vinculables a cambios  \\ \hline
+	javafx.collections 		& & Colecciones y utilidades esenciales para observar y reaccionar a cambios en el contenido de las colecciones  \\ \hline
+	javafx.concurrent 		& & Clases de ayuda para el manejo de procesos asíncronos \\ \hline
+	javafx.css 				& & Provee APIs para hacer que las propiedades de los componentes gráficos sean personalizables vía CSS \\ \hline
+	javafx.event 			& & Clases para la definición y el manejo de eventos en componentes de la interface \\ \hline
+	javafx.fxml 			& & Contiene clases para la manipulación de archivos fxml \\ \hline
+	javafx.geometry 		& & Conjunto de clases para la definición y operación de formas 2D \\ \hline
+	javafx.print 			& & Clases para la impresión de archivos \\ \hline
+	javafx.scene 			& & Conjunto principal de clases para la construcción del Scene Graph \\ \hline
+	javafx.stage 			& & Contiene clases de contenedores de "alto nivel" como ventanas o pop-ups \\ \hline
+	javafx.util 			& & Clases de utilidad y ayuda \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table} 
+
+\subsection*{Scene Graph}
+
+El Scene Graph o grafo de escena es una representación jerárquica de la interface de usuario de la aplicación. Para cada ventana que tenga la aplicación existirá un grafo de escena. El grafo contiene nodos, estos son todos los elementos visuales de la interface: controles, primitivas gráficas, layouts, imágenes, etc. Cada nodo tiene una clase asociada a su estilo y un identificador único. Todos los nodos con excepción de la raíz poseen un padre y cero o más nodos hijos.
+
+Usar este tipo de representación tiene dos ventajas, la primera es que se pueden aplicar efectos, transformaciones y escuchadores de eventos a nodos particulares o a un sub-árbol de nodos del grafo a la vez; la segunda es que se mejora el desempeño de la aplicación usando estrategias de optimización de renderizado de la escena.
+
+\newpage
+\section*{Primer Ejemplo}
+
+El siguiente código servirá como acercamiento al Scene Graph, ciclo de vida de una aplicación y las APIs disponibles para la creación de interfaces.
+\\
+\begin{lstlisting}[caption={Código de la primera aplicación},label={lst:first-app}, numbers=left, xleftmargin=\listingnumberwidth, numbersep=1em]
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class App extends Application {
+	
+    @Override
+    public voidvoid start(Stage primaryStage) throws Exception {
+		Label label = new Label("First application in JavaFX");
+	
+		StackPane pane = new StackPane();
+		pane.getChildren().add(label);
+		
+		Scene myScene = new Scene(pane);
+		
+		primaryStage.setScene(myScene);
+		primaryStage.setWidth(400);
+		primaryStage.setHeight(300);
+		primaryStage.show();
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+\end{lstlisting}
+
+La figura \ref{img:first-app} muestra la ventana creada con el código anterior. Como se observa, ésta simplemente tiene un texto en ella, igual de sencillo será su grafo de escena pero para que se pueda comprender la estructura del grafo con claridad primero se explicará el código.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[scale=0.8]{images/first-app.png}}
+\caption{Ventana de la primera aplicación}
+\label{img:first-app}
+\end{figure}
+
+Las líneas 1-5 son las las sentencias de importación de las clases utilizadas de la API de JavaFX. Las clases Application, Stage y Scene son esenciales para elaborar una aplicación JavaFX.
+
+En la línea 7 la clase principal extiende de \emph{Application}. Extender de \emph{Application} es requisito para que el método \emph{main} tenga acceso al método \emph{launch} y a los distintos métodos del ciclo de vida de las aplicaciones JavaFX.
+
+En la tabla \ref{table:javafx-lifecycle} se muestran los métodos del ciclo de vida de las aplicaciones JavaFX. La figura \ref{img:javafx-lifecycle} ilustra el flujo de ejecución del ciclo de vida.
+
+\begin{table} \footnotesize \centering
+	\caption{Métodos del ciclo de vida}
+    \label{table:javafx-lifecycle}
+    \begin{tabular}{l | p{13cm}}
+    \toprule[1.5pt]
+   	\textbf{Método} & \textbf{Descripción} \\
+    \midrule[1.5pt]
+   	launch(String[]) & Método estático invocado desde el método \emph{main}, inicia el ciclo de vida. \\ \hline
+	init() & Usado para inicializar los recursos que la aplicación pudiera necesitar. \\ \hline
+	start(Stage) & Añade el grafo de escena a la ventana de la aplicación. \\ \hline
+	stop() & Usado para cerrar conexiones a bases de datos, flujos a archivos y todo aquello que deba ser finalizado antes de terminar la ejecución de la aplcación.  \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table} 
+
+\begin{figure}[h]
+\begin{framed} \centering
+\includegraphics[scale=0.8]{images/javafx-lifecycle.png}
+\end{framed}
+\caption{Flujo del ciclo de vida de una aplicación JavaFX}
+\label{img:javafx-lifecycle}
+\end{figure}
+
+Desde la línea 10 a la 22 se sobreescribe el método abstracto \emph{start(Stage)}, es en este método donde se construye el grafo de escena de nuestra aplicación. En la línea 11 se crea una instancia de la clase Label, en la línea 13 una de la clase administradora de diseño StackPane y en la línea 14 se añade el objeto label a los nodos hijo del objeto pane.
+
+En la línea 16 se crea una instancia del grafo de escena y se añade el objeto del panel administrador de diseño, hasta este punto ya está construido el grafo de escena de la interface. 
+
+En la línea 18 se vincula el grafo de escena al objeto \emph{primaryStage}. Este objeto fue suministrado como un argumento por el ciclo de vida de la aplicación; puede considerarse a este objeto como la ventana principal de la aplicación.
+
+Por último del método \emph{start}, en las líneas 19 y 20 se especifica el tamaño de la ventana y en la 21 se hace visible.
+
+Las líneas 24, 25 y 26 está la definición del método \emph{main} de la aplicación, aquí es donde se inicia el ciclo de vida de la aplicación de JavaFX con el método \emph{launch}.
+
+La figura \ref{img:first-app-scene-graph} muestra el grafo de escena del código \ref{lst:first-app}, como se había mencionado este es un grafo muy simple debido a la sencillez de la aplicación, lo importante es comprender que el grafo de escena es una estructura jerárquica donde todos los elementos de la interface están contenidos, incluso los administradores de diseño. 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{images/first-app-scene-graph.png}
+
+\caption{Grafo de escena del Código 1}
+\label{img:first-app-scene-graph}
+\end{figure}
+
+De forma general se pueden definir los siguientes pasos para la creación de una aplicación con JavaFX.
+
+\begin{enumerate} \itemsep0em
+\item Extender la clase \emph{javafx.application.Application}.
+\item Implementar el método \emph{start(Stage)} y crear en él el grafo de la escena.
+\item (Opcional) Implementar los métodos \emph{init()} y \emph{stop()} si la aplicación lo requiere.
+\item Invocar en el método \emph{main()} el método \emph{launch()} de la subclase de \emph{javafx.application.Application}.
+\end{enumerate}
+
+En capítulos posteriores se explicará al lector con mayor detalle cuáles son los controles disponibles, como construir interfaces mediante archivos FXML, graficación de figuras 2D, aplicaciones que operen mediante una red y aplicaciones con acceso a bases de datos.
+
+
+\nocite{*} 
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
+
