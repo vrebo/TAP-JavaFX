@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.12)  23 JUN 2017 03:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.12)  23 JUN 2017 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,18 +658,18 @@ LaTeX Warning: Label `code:chat-layout' multiply defined.
 )
 \openout1 = `"1.2 Librerias de Interfaz Grafica.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count123
@@ -727,8 +727,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 91.
-LaTeX Info: Redefining \% on input line 91.
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -773,14 +773,14 @@ Unidad 1.
 File: images/diagrama-clases-awt.png Graphic file (type png)
 
 <use images/diagrama-clases-awt.png>
-Package pdftex.def Info: images/diagrama-clases-awt.png used on input line 122.
+Package pdftex.def Info: images/diagrama-clases-awt.png used on input line 124.
 
 (pdftex.def)             Requested size: 371.69128pt x 194.08371pt.
  [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 135.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 137.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -790,7 +790,7 @@ File: images/diagrama-clases-swing.png Graphic file (type png)
 
 <use images/diagrama-clases-swing.png>
 Package pdftex.def Info: images/diagrama-clases-swing.png used on input line 14
-4.
+6.
 (pdftex.def)             Requested size: 371.69128pt x 224.64204pt.
 
 <images/diagrama-clases-javafx.png, id=10, 517.935pt x 316.18124pt>
@@ -798,7 +798,7 @@ File: images/diagrama-clases-javafx.png Graphic file (type png)
 
 <use images/diagrama-clases-javafx.png>
 Package pdftex.def Info: images/diagrama-clases-javafx.png used on input line 1
-57.
+59.
 (pdftex.def)             Requested size: 371.69128pt x 226.91216pt.
 
 
@@ -812,7 +812,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/diagrama-clases-javafx-controles.png Graphic file (type png)
 <use images/diagrama-clases-javafx-controles.png>
 Package pdftex.def Info: images/diagrama-clases-javafx-controles.png used on in
-put line 164.
+put line 166.
 (pdftex.def)             Requested size: 371.69128pt x 224.76231pt.
 
 <images/diagrama-clases-javafx-contenedores.png, id=16, 545.03625pt x 178.6675p
@@ -820,27 +820,27 @@ t>
 File: images/diagrama-clases-javafx-contenedores.png Graphic file (type png)
  <use images/diagrama-clases-javafx-contenedores.png>
 Package pdftex.def Info: images/diagrama-clases-javafx-contenedores.png used on
- input line 171.
+ input line 173.
 (pdftex.def)             Requested size: 371.69128pt x 121.84396pt.
  [3 <./images/diagrama-clases-swing.png> <./images/diagrama-clases-javafx.png>]
  [4 <./images/diagrama-clases-javafx-controles.png> <./images/diagrama-clases-j
 avafx-contenedores.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 184.
+LaTeX Font Info:    Try loading font information for U+msa on input line 186.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 184.
+LaTeX Font Info:    Try loading font information for U+msb on input line 186.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 7722) in paragraph at lines 189--189
+Underfull \hbox (badness 7722) in paragraph at lines 191--191
 []\OT1/cmr/m/n/10 Establece la mo-da-li-dad en que va a fun-cio-nar el con-te-n
 e-dor.
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 189--189
+Underfull \hbox (badness 1838) in paragraph at lines 191--191
 \OT1/cmr/m/n/10 Las mo-da-li-da-des son: []\OT1/pcr/m/n/10 Modality.NONE\OT1/cm
 r/m/n/10 , []\OT1/pcr/m/n/10 Modality.WINDOW_MODAL\OT1/cmr/m/n/10 ,
  []
@@ -854,8 +854,8 @@ LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
 File: images/app-ejemplo-controles.png Graphic file (type png)
 
 <use images/app-ejemplo-controles.png>
-Package pdftex.def Info: images/app-ejemplo-controles.png used on input line 23
-9.
+Package pdftex.def Info: images/app-ejemplo-controles.png used on input line 24
+1.
 (pdftex.def)             Requested size: 386.73134pt x 337.9093pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -866,7 +866,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/diagrama-clases-menu.png Graphic file (type png)
 
 <use images/diagrama-clases-menu.png>
-Package pdftex.def Info: images/diagrama-clases-menu.png used on input line 268
+Package pdftex.def Info: images/diagrama-clases-menu.png used on input line 270
 .
 (pdftex.def)             Requested size: 325.22722pt x 224.88196pt.
  (./source-codes/t-1-2-menu-1.java)
@@ -877,14 +877,14 @@ Underfull \vbox (badness 4024) has occurred while \output is active []
 File: images/ejemplo-menus-1.png Graphic file (type png)
 
 <use images/ejemplo-menus-1.png>
-Package pdftex.def Info: images/ejemplo-menus-1.png used on input line 288.
+Package pdftex.def Info: images/ejemplo-menus-1.png used on input line 290.
 (pdftex.def)             Requested size: 386.73134pt x 145.18536pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 304.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 306.
 
 Underfull \vbox (badness 5175) has occurred while \output is active []
 
@@ -894,14 +894,14 @@ Underfull \vbox (badness 5175) has occurred while \output is active []
 File: images/app-ejemplo-menus-2.png Graphic file (type png)
 
 <use images/app-ejemplo-menus-2.png>
-Package pdftex.def Info: images/app-ejemplo-menus-2.png used on input line 314.
+Package pdftex.def Info: images/app-ejemplo-menus-2.png used on input line 316.
 
 (pdftex.def)             Requested size: 338.38716pt x 127.03372pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11 <./images/ejemplo-menus-1.png>] [12 <./images/app-ejemplo-menus-2.png>]
-Overfull \hbox (4.98671pt too wide) in paragraph at lines 332--339
+Overfull \hbox (4.98671pt too wide) in paragraph at lines 334--341
  [][] 
  []
 
@@ -917,20 +917,20 @@ Overfull \vbox (0.9035pt too high) has occurred while \output is active []
 File: images/app-code-4.png Graphic file (type png)
 
 <use images/app-code-4.png>
-Package pdftex.def Info: images/app-code-4.png used on input line 365.
+Package pdftex.def Info: images/app-code-4.png used on input line 367.
 (pdftex.def)             Requested size: 435.06815pt x 214.26799pt.
  [15]
 <images/dialogs.png, id=75, 586.993pt x 225.643pt>
 File: images/dialogs.png Graphic file (type png)
  <use images/dialogs.png>
-Package pdftex.def Info: images/dialogs.png used on input line 397.
+Package pdftex.def Info: images/dialogs.png used on input line 399.
 (pdftex.def)             Requested size: 435.06815pt x 167.24864pt.
 
 <images/app-code-6.png, id=76, 724.7075pt x 333.245pt>
 File: images/app-code-6.png Graphic file (type png)
 
 <use images/app-code-6.png>
-Package pdftex.def Info: images/app-code-6.png used on input line 421.
+Package pdftex.def Info: images/app-code-6.png used on input line 423.
 (pdftex.def)             Requested size: 435.06815pt x 200.0604pt.
  [16 <./images/app-code-4.png>] [17 <./images/dialogs.png>] [18 <./images/app-c
 ode-6.png>]
@@ -938,21 +938,21 @@ ode-6.png>]
 File: images/app-code-7.png Graphic file (type png)
 
 <use images/app-code-7.png>
-Package pdftex.def Info: images/app-code-7.png used on input line 434.
+Package pdftex.def Info: images/app-code-7.png used on input line 436.
 (pdftex.def)             Requested size: 435.06815pt x 192.86713pt.
 
 <images/app-code-8.png, id=90, 303.1325pt x 176.66pt>
 File: images/app-code-8.png Graphic file (type png)
 
 <use images/app-code-8.png>
-Package pdftex.def Info: images/app-code-8.png used on input line 455.
+Package pdftex.def Info: images/app-code-8.png used on input line 457.
 (pdftex.def)             Requested size: 241.70616pt x 140.86453pt.
 
 <images/app-code-9.png, id=91, 604.2575pt x 377.41pt>
 File: images/app-code-9.png Graphic file (type png)
 
 <use images/app-code-9.png>
-Package pdftex.def Info: images/app-code-9.png used on input line 466.
+Package pdftex.def Info: images/app-code-9.png used on input line 468.
 (pdftex.def)             Requested size: 241.70616pt x 150.96707pt.
  [19 <./images/app-code-7.png>] [20 <./images/app-code-8.png> <./images/app-cod
 e-9.png>]
@@ -960,10 +960,10 @@ e-9.png>]
 File: images/app-code-10.png Graphic file (type png)
 
 <use images/app-code-10.png>
-Package pdftex.def Info: images/app-code-10.png used on input line 478.
+Package pdftex.def Info: images/app-code-10.png used on input line 480.
 (pdftex.def)             Requested size: 386.73134pt x 138.1188pt.
 
-Overfull \hbox (4.35709pt too wide) in paragraph at lines 490--496
+Overfull \hbox (4.35709pt too wide) in paragraph at lines 492--498
  [][] 
  []
 
@@ -973,14 +973,14 @@ File: images/scene-builder-gluon-arrows.png Graphic file (type png)
 
 <use images/scene-builder-gluon-arrows.png>
 Package pdftex.def Info: images/scene-builder-gluon-arrows.png used on input li
-ne 509.
+ne 511.
 (pdftex.def)             Requested size: 459.24023pt x 283.97429pt.
  [22 <./images/scene-builder-gluon-arrows.png (PNG copy)>] <images/chat.png, id
 =112, 503.8825pt x 397.485pt>
 File: images/chat.png Graphic file (type png)
 
 <use images/chat.png>
-Package pdftex.def Info: images/chat.png used on input line 520.
+Package pdftex.def Info: images/chat.png used on input line 522.
 (pdftex.def)             Requested size: 338.38716pt x 266.9322pt.
  (./source-codes/t-1-2-chat1.java)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
