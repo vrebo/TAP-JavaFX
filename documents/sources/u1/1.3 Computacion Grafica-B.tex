@@ -1,0 +1,157 @@
+\documentclass[12pt,letterpaper]{book}
+
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{courier}
+
+\usepackage{etoolbox}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{CE7B00}
+\definecolor{java-const}{HTML}{6600CC}
+
+
+%	Cambia los margenes del documento
+\geometry{left=23mm,top=20mm,right=23mm}
+%	Modifica el formato del comando \section
+\titleformat{\section}{\large\bfseries\raggedleft}{Lección \thesection}{1em}{}[{\titlerule[0.8pt]}]
+%	Modifica el comando \chapter
+\addto\captionsspanish{\renewcommand{\chaptername}{Unidad}}
+
+%	Modifica el encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\chaptername : Elementos de Interfaces Gráficas}
+\lhead{Tópicos Avanzados de Programación}
+\rfoot{Página \thepage}
+\lfoot{Rafael Rivera López}
+
+%	Agrega espaciado en el interior del las filas de las tablas
+\renewcommand{\arraystretch}{1.5}
+
+%Para cambiar el grosor de la línea de encabezado o pie de página
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand{\lstlistingname}{Código}
+
+
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ },
+  moredelim={[is][\bf]{\#bf}{\#bf}},
+}
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+ 
+ 
+
+\begin{document}
+\chapter{Elementos de Interfaces Gráficas}
+
+
+\section{Computación Gráfica}
+
+\subsection{Ejemplos de uso de primitivas de dibujo}
+
+\subsubsection{Proyecto Símbolo}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.25\textwidth]{images/t-1-3_app-code-3}}
+\caption{Señal de riesgo por radiación ionizante dibujado en el contexto gráfico.}
+\end{figure}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Aplicación para dibujar el símbolo de riesgo radiactivo., 
+]{source-codes/t-1-3_code-3_Main.java}
+\end{minipage}
+
+\textbf{Método translate}\\
+Mueve el centro del sistema de coordenadas al punto especificado.
+\begin{itemize}
+\item void translate(double x, double y)
+\end{itemize}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase RadioactiveSymbol., 
+]{source-codes/t-1-3_code-3_RadioactiveSymbol.java}
+\end{minipage}
+
+\newpage
+\subsubsection{Proyecto Dibujo}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.6\textwidth]{images/t-1-3_app-code-4}}
+\caption{Dibujo de figuras en el contexto gráfico.}
+\end{figure}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Aplicación para dibujar figuras en el contexto gráfico., 
+]{source-codes/t-1-3_code-4_Main.java}
+\end{minipage}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase DrawPane (Parte 1)., 
+	firstline=1,lastline=64
+]{source-codes/t-1-3_code-4_DrawPane.java}
+\end{minipage}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase DrawPane (Parte 2)., 
+	firstline=64
+]{source-codes/t-1-3_code-4_DrawPane.java}
+\end{minipage}
+
+
+\end{document}
