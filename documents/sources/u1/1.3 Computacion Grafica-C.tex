@@ -1,0 +1,225 @@
+\documentclass[12pt,letterpaper]{book}
+
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{courier}
+
+\usepackage{etoolbox}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{CE7B00}
+\definecolor{java-const}{HTML}{6600CC}
+
+
+%	Cambia los margenes del documento
+\geometry{left=23mm,top=20mm,right=23mm}
+%	Modifica el formato del comando \section
+\titleformat{\section}{\large\bfseries\raggedleft}{Lección \thesection}{1em}{}[{\titlerule[0.8pt]}]
+%	Modifica el comando \chapter
+\addto\captionsspanish{\renewcommand{\chaptername}{Unidad}}
+
+%	Modifica el encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\chaptername : Elementos de Interfaces Gráficas}
+\lhead{Tópicos Avanzados de Programación}
+\rfoot{Página \thepage}
+\lfoot{Rafael Rivera López}
+
+%	Agrega espaciado en el interior del las filas de las tablas
+\renewcommand{\arraystretch}{1.5}
+
+%Para cambiar el grosor de la línea de encabezado o pie de página
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand{\lstlistingname}{Código}
+
+
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ },
+  moredelim={[is][\bf]{\#bf}{\#bf}},
+}
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+ 
+ 
+
+\begin{document}
+\chapter{Elementos de Interfaces Gráficas}
+
+
+\section{Computación Gráfica}
+
+\subsection{Conceptos sobre archivos}
+
+Desde una perspectiva de "bajo nivel" se puede definir un archivo como: Un conjunto de bits almacenados en un dispositivo y accesible a través de una ruta de acceso (path) que lo identifica. En general, existen dos criterios para clasificar a los archivos.
+
+\begin{itemize}
+\item \textbf{De acuerdo a su contenido:} Los archivos de caracteres (o de texto) y los de bytes (binarios).
+	\begin{itemize}
+	\item \textbf{Archivo de texto:} Es aquél formado exclusivamente por caracteres y pueden crearse y visualizarse usando un editor (los archivos de código fuente de Java).
+	\item \textbf{Archivo binario:} No está formado por caracteres si no por los bytes que contiene y pueden representar imágenes, sonido, etc.
+	\end{itemize}
+\item \textbf{De acuerdo de acceso:} Acceso secuencial o acceso directo.
+	\begin{itemize}
+	\item \textbf{Acceso secuencial:} La información del archivo es una secuencia de elementos (bytes o caracteres) de manera que para acceder al i-ésimo elemento se debe haber accedido a los i-1 elementos anteriores.
+	\item \textbf{Acceso directo:} La información del archivo puede ser accesada de forma directa a través de apuntadores o índices.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Lor archivos desde Java}
+
+Se utilizan las clase del paquete \texttt{java.io} para manipulación de archivos. El código que maneja archivos debe considerar que varias cosas pueden fallar al tratar de manipularlos, por ejemplo: el achivo está dañado, desconexión inesperada de la fuente de datos, etc.
+
+\subsubsection{Manejo de excepciones}
+
+Las excepciones son un mecanismo que permite a los métodos indicar si algún error ha sucedido (una situación excepcional), de manera que quien ha invocado al método puede detectar la situación errónea y actuar acorde al caso.\\
+
+Cuando un error sucede, el método lanza (throw) una excepción y en lugar de seguir la ejecución normal de instrucciones, se busca hacia atrás en la secuencia de llamadas si existe alguna que pueda atraparla (catch). Si no se pueden atrapar, el programa acaba su ejecución y se informa del error que ha producido la excepción.\\
+
+Las excepciones pueden ser:
+\begin{itemize}
+\item \textbf{Excepciones de tiempo de ejecución:} Estas no obligan al programador a tratarlas explícitamente.
+\item \textbf{Excepciones verificadas:} Obligan al programador a atrapar la excepción (bloque {\tt \bf try-catch}) o indicar que dicho método puede lanzar la excepción (declaración {\tt \bf throws}).
+\end{itemize}
+
+\subsubsection{Lectura de archivos secuenciales de texto}
+
+\begin{itemize}
+\item La lectura de un archivo se realiza utilizando \textbf{flujos} o streams.
+\item {\tt\bf FileReader} permite leer caracteres de un archivo.
+\item El método {tt\bf read()} lee el siguiente carácter no leído del archivo.
+\item El método read() devuelve -1 cuando ya no hay más caracteres que leer.
+\end{itemize}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/stream-general-scheme}}
+\caption{Esquema general del flujo de archivos.}
+\end{figure}
+
+\subsubsection{Buffering}
+
+Para leer elementos en bloque se requiere de un buffer (o memoria temporal) que permita almacenar los caracteres hasta que se cumpla una condición, un salto de línea por ejemplo.
+
+\begin{itemize}
+\item {\tt\bf BufferedReader} es un buffer para leer líneas de caracteres y almacenarlos en objetos String.
+\item \texttt{BufferedReader} no puede leer directamente de un archivo, si no que requiere de un objeto.
+\item El método {\tt\bf readLine()} permite leer una cadena de caracteres completa hasta encontrar la marca de fin de línea.
+\item El método {\tt readLine()} no regresa {\tt null} cuando no puede leer más líneas.
+\end{itemize}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/stream-specific-scheme}}
+\caption{Esquema detallado del flujo de archivos.}
+\end{figure}
+
+Los elementos leídos por {\tt FileReader} y/o {\tt BufferedReader} deben almacenarse en algún objeto.
+
+\begin{itemize}
+\item \textbf{Estructura estática (String):} Antes de leer el archivo se requiere conocer el númeor de elementos a leer (caracteres o líneas). Si no se conocen, primero se deben contar los elementos y luego almacenarlos.
+\begin{center} \tt \footnotesize
+	String\verb|[|\verb|]| lines = new String\verb|[|ELEMENTS\verb|_|COUNT\verb|]|;
+\end{center}
+
+\item \textbf{Estructura dinámica (Listas enlazadas):} Al leer un elemento, se va adicionando a la estructura, qué va creciendo conforme se adicionan elementos.
+\begin{center} \tt \footnotesize
+	List<String> \space lines = new ArrayList<>();
+\end{center}
+\end{itemize}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase auxiliar para funciones con archivos., 
+]{source-codes/t-1-3_util_FileHelper.java}
+\end{minipage}
+
+\newpage
+\subsection{Aplicación para desplegar el contenido de un archivo}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/t-1-3_app-code-5}}
+\caption{Área de texto que muestra el código leído desde un archivo}
+\end{figure}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Aplicación del editor que lee un archivo., 
+]{source-codes/t-1-3_code-5_Main.java}
+\end{minipage}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase EditorPane., 
+]{source-codes/t-1-3_code-5_EditorPane.java}
+\end{minipage}
+
+\newpage
+\subsection{Clases para leer y dibujar un polígono}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/t-1-3_app-code-6}}
+\caption{Poligono dibujado con coordenadas leídas desde un archivo}
+\end{figure}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Aplicación para dibujar figuras un polígono usando un archivo., 
+]{source-codes/t-1-3_code-6_Main.java}
+\end{minipage}
+
+\begin{minipage}[c]{0.95\textwidth}
+\lstinputlisting[
+	caption=Clase PolygonPane.
+]{source-codes/t-1-3_code-6_PolygonPane.java}
+\end{minipage}
+
+
+\end{document}

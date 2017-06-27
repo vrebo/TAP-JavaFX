@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="t-1-3-computacion-grafica.jar" size="16514" download="eager" />
+    <jar href="t-1-3-computacion-grafica.jar" size="22655" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="t-1-3-computacion-grafica" >
     <param name="requiredFXVersion" value="8.0+"/>
