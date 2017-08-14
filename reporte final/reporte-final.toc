@@ -1,0 +1,42 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {I}Marco Metodol\IeC {\'o}gico}{1}
+\contentsline {section}{\numberline {1}Antecedentes}{1}
+\contentsline {section}{\numberline {2}Definici\IeC {\'o}n del Problema}{2}
+\contentsline {section}{\numberline {3}Objetivos}{2}
+\contentsline {subsection}{\numberline {3.1}Objetivo General}{2}
+\contentsline {subsection}{\numberline {3.2}Objetivos Espec\IeC {\'\i }ficos}{2}
+\contentsline {subsection}{\numberline {3.3}Justificaci\IeC {\'o}n}{3}
+\contentsline {subsection}{\numberline {3.4}Alcance y Limitaciones}{3}
+\contentsline {chapter}{\numberline {II}Marco Te\IeC {\'o}rico}{4}
+\contentsline {section}{\numberline {1}Java}{4}
+\contentsline {section}{\numberline {2}Arquitectura Modelo-Vista-Controlador}{4}
+\contentsline {section}{\numberline {3}Evoluci\IeC {\'o}n de GUI Toolkits}{5}
+\contentsline {section}{\numberline {4}JavaFX}{9}
+\contentsline {subsection}{\numberline {4.1}Arquitectura}{9}
+\contentsline {subsubsection}{Capa Nativa}{10}
+\contentsline {subsubsection}{Capa Privada}{10}
+\contentsline {subsubsection}{Capa P\IeC {\'u}blica}{10}
+\contentsline {section}{\numberline {5}eXtensible Markup Language}{11}
+\contentsline {subsection}{\numberline {5.1}Documentos Bien Formados}{12}
+\contentsline {subsection}{\numberline {5.2}Estructura L\IeC {\'o}gica}{12}
+\contentsline {section}{\numberline {6}FX Markup Language}{13}
+\contentsline {section}{\numberline {7}Cascading Style Sheets}{16}
+\contentsline {subsection}{\numberline {7.1}CSS \& FXML}{16}
+\contentsline {chapter}{\numberline {III}Desarrollo}{18}
+\contentsline {section}{\numberline {1}Enfoque metodol\IeC {\'o}gico}{18}
+\contentsline {section}{\numberline {2}Identificaci\IeC {\'o}n de la informaci\IeC {\'o}n pertinente}{18}
+\contentsline {section}{\numberline {3}Procedimiento}{19}
+\contentsline {chapter}{\numberline {IV}Resultados}{20}
+\contentsline {section}{\numberline {1}Material Did\IeC {\'a}ctico en PDF}{20}
+\contentsline {section}{\numberline {2}C\IeC {\'o}digos de Ejemplo}{20}
+\contentsline {chapter}{\numberline {V}Evidencias}{21}
+\contentsline {chapter}{\numberline {VI}Conclusiones}{23}
+\contentsline {chapter}{\numberline {VII}Recomendaciones}{24}
+\contentsline {chapter}{Anexos}{26}
+\contentsline {chapter}{\numberline {A}Introducci\IeC {\'o}n a JavaFX}{27}
+\contentsline {chapter}{\numberline {B}Elementos de Interfaces Gr\IeC {\'a}ficas}{39}
+\contentsline {chapter}{\numberline {C}Librer\IeC {\'\i }as de Interfaces Gr\IeC {\'a}ficas}{48}
+\contentsline {chapter}{\numberline {D}Computaci\IeC {\'o}n Gr\IeC {\'a}fica 1}{73}
+\contentsline {chapter}{\numberline {E}Computaci\IeC {\'o}n Gr\IeC {\'a}fica 2}{84}
+\contentsline {chapter}{\numberline {F}Computaci\IeC {\'o}n Gr\IeC {\'a}fica 3}{90}
+\contentsline {chapter}{\numberline {G}Programaci\IeC {\'o}n Orientada a Eventos}{99}

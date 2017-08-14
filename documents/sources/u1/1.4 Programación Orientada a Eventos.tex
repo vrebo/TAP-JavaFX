@@ -1,0 +1,766 @@
+\documentclass[12pt,letterpaper]{book}
+
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{courier}
+
+\usepackage{etoolbox}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{CE7B00}
+\definecolor{java-const}{HTML}{6600CC}
+
+\captionsetup[table]{position=bottom}
+
+%	Cambia los margenes del documento
+\geometry{left=23mm,top=20mm,right=23mm}
+%	Modifica el formato del comando \section
+\titleformat{\section}{\large\bfseries\raggedleft}{Lección \thesection}{1em}{}[{\titlerule[0.8pt]}]
+%	Modifica el comando \chapter
+\addto\captionsspanish{\renewcommand{\chaptername}{Unidad}}
+
+%	Modifica el encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\chaptername : Elementos de Interfaces Gráficas}
+\lhead{Tópicos Avanzados de Programación}
+\rfoot{Página \thepage}
+\lfoot{Rafael Rivera López}
+
+%	Agrega espaciado en el interior del las filas de las tablas
+\renewcommand{\arraystretch}{1.5}
+
+%Para cambiar el grosor de la línea de encabezado o pie de página
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\newlength\listingnumberwidth
+\setlength\listingnumberwidth{\widthof{00} + 1em}
+\renewcommand{\lstlistingname}{Código}
+
+
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ },
+  moredelim={[is][\bf]{\#bf}{\#bf}},
+}
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+ 
+ 
+
+\begin{document}
+\chapter{Elementos de Interfaces Gráficas}
+\section{Programación Orientada a Eventos}
+
+\subsection{Concepto de Evento}
+%Presentación de los hechos más relevantes sobre los eventos
+\begin{itemize}
+\item Un evento es resultado de la ejecución de una acción dentro de un entorno gráfico.
+\item Los eventos pueden ser generados por interacción del usuario con la GUI o por disparo mediante programación.
+\item Los eventos son objetos. En una ventana, los eventos representan acciones como hacer click a un botón, el movimiento del ratón, la captura de texto en un campo, etc.
+%Duda sobre el significado de sistema y programas.
+\item Cualquier interfaz gráfica constantemente monitorea los eventos en el sistema e informa de estos a los programas que se están ejecutando. Cada programa determina como reaccionar en respuesta a esos eventos. 
+\end{itemize}
+
+
+\subsection{Esquema del Manejo de Eventos}
+%Explicación de los elementos involucrados en el manejo de eventos
+
+Para el manejo de eventos se requiere un esquema compuesto de los siguientes elementos \textbf{modelados como objetos}.
+
+\begin{itemize}
+\item \textbf{Origen del evento:} Típicamente son los componentes gráficos (botones, opciones de menú, cuadros de texto, etc) con los que interactúa el usuario.\\
+Al efectuar una acción sobre el componente (dar click, dar enter, etc) se \textbf{dispara} (crea) un objeto que encapsula dicha acción.
+\item \textbf{Evento:} Objeto que encapsula la información relacionada al objeto que lo originó (su nombre, por ejemplo) y las condiciones de la acción realizada.
+\item \textbf{Oyente del evento:} Cumple la función de \verb|"|estar atentos escuchando\verb|"| si se dispara un evento. Cuando un evento se dispara y es escuchado por el oyente, este puede ejecutar una o varias acciones para responder al evento.
+\end{itemize}
+
+Debido a que en una interfaz gráfica pueden existir multiples origenes de eventos, también pueden existir varios oyentes para atender de forma particular a cada origen. Esto tiene como beneficio que se delimitan las responsabilidades de cada oyente con mayor claridad.\\
+
+Por lo anterior, es muy importante asociar a cada origen su correspondiente oyente. Esta operación se conoce como \verb|"|registro del oyente al origen\verb|"|. Es claro que un oyente puede ser registrado a uno o varios componentes.
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.9\textwidth]{images/event-handling-scheme}}
+\caption{Esquema general para manejar los eventos}
+\end{figure}
+
+\subsection{Clasificación de Eventos}
+%Presentación del diagrama de clases de los eventos en JavaFX
+%Presentación de asociaciones típicas de los componentes gráficos y eventos
+El esquema de eventos de JavaFX es distinto en diseño y funcionamiento al de sus predecesores Swing y AWT. Se integra de dos clases: \textsf{Event} e \textsf{EvenType}, y una interface (clases con prototipos de métodos), \textsf{EventHandler}.\\
+
+Event es la clase base que modela los eventos. Todos los eventos definidos en JavaFX extienden de Event, véase la figura \ref{fig:diagrama-eventos}. Toda instancia de Event tendrá asociado su origen (objeto que desencadenó el evento), un target (camino que seguirá el evento al ser disparado) y uno o más subtipos que son modelados por la clase \textsf{EventType}.\\
+
+Cada subclase de \textsf{Event} es en sí un tipo de evento distinto, los tipos modelados por \textsf{EventType} son útiles para clasificar específicamente eventos que pertenecen a una misma subclase de \textsf{Event}. Por ejemplo, la clase MouseEvent que modela los eventos de mouse que suceden sobre un componente puede especificarse en los eventos: botón presionado, botón liberado, click en mouse, movimiento del mouse, etc. Esta forma de subclasificar eventos se emplea agregando atributos estáticos a la subclase de \textsf{Event} en cuestión, véase la figura \ref{fig:diagrama-keyevent}. La tabla \ref{table:event-eventype} tiene una relación de los eventos y sus subtipos más relevantes.
+
+\begin{figure}[!htp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.9\textwidth]{images/diagrama-clases-eventos}}
+\caption{Diagrama de clases de eventos en JavaFX}
+\label{fig:diagrama-eventos}
+\end{figure}
+
+\begin{figure}[!htp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.9\textwidth]{images/keyevent-diagram-class}}
+\caption{Diagrama de clase KeyEvent}
+\label{fig:diagrama-keyevent}
+\end{figure}
+
+\begin{table} \footnotesize \centering \caption{Relación Event - EvenType}
+    \label{table:event-eventype}
+    \begin{tabular}{l p{12cm}} \toprule[1.5pt]
+   	\textbf{Subclase} 			& \textbf{Subtipos} \\ \midrule[1.5pt]
+	MouseEvent & MOUSE\verb|_|DETECTED, MOUSE\verb|_|CLICKED, MOUSE\verb|_|DRAGGED, MOUSE\verb|_|MOVED, MOUSE\verb|_|ENTERED, MOUSE\verb|_|EXITED, MOUSE\verb|_|MOVED, MOUSE\verb|_|PRESSED y MOUSE\verb|_|RELEASED \\ \hline
+	
+KeyEvent & KEY\verb|_|PRESSED, KEY\verb|_|RELEASED y KEY\verb|_|TYPED\\ \hline
+
+TouchEvent & TOUCH\verb|_|MOVED, TOUCH\verb|_|PRESSED, TOUCH\verb|_|RELEASED y TOUCH\verb|_|STATIONARY
+ \\ \bottomrule[1.5pt]
+    \end{tabular}
+\end{table}
+
+\subsection{Tipos de Oyentes}
+%Hechos específicos sobre el framework para eventos en JavaFX (Métodos, modelado y sus detalles)
+%Tabla informativa sobre los eventos, su interfaz oyente y los métodos asociados
+%Ejemplo de la implementación de clases oyentes usando las interfaces
+Las clases oyentes representan objetos que pueden manipular los eventos que escuchan. JavaFX utiliza la interface \textsf{EventHandler} para el manejo de todos los tipos de eventos posibles, el código \ref{lst:eventhandler-def} muestra su definición. 
+
+\begin{lstlisting}[caption={Definición de la interface EventHandler},label={lst:eventhandler-def}, numbers=left, xleftmargin=\listingnumberwidth, numbersep=1em]
+public interface EventHandler<T extends Event> extends EventListener {
+
+    void handle(T event);
+    
+}
+
+\end{lstlisting}
+
+EventHandler es una interface paramétrizada, esto significa que su definición es aún más general que el de una interface normal, dando posibilidad al programador de especificar los tipos de retorno o argumentos de sus métodos mediante el parámetro que se encuentra entre los símbolos \verb|< >|.\\
+
+En la línea 1 del código \ref{lst:eventhandler-def}, se indica que el parámetro \textsf{T} tiene que ser subclase de \textsf{Event}, y este parámetro modificará el tipo del argumento de la función \textsf{handle()} de la línea  3. Es el uso del parámetro de la interface lo que vuelve a \textsf{EventHandler} lo suficiente flexible y puede ser utilizada para escuchar y atender cualquier tipo de evento.\\
+
+Estos son los cuatro modos de implementar un oyente con la interface EventHandler:
+
+\begin{description}
+\item[Implementación externa:] Una clase independiente (clase que es ajena a cualquier otra) implementa la interface EventHandler, posteriormente se registra una nueva instancia del oyente en el objeto que origina los eventos. Vea el código \ref{lst:extern-listener}.
+\item[Implementación interna:] La interface EventHandler se implementa en alguna de las otras clases de la aplicación, una clase contenedora por ejemplo y posteriormente se registra la instancia de la clase que implentó la interface como oyente en el objeto que origina los eventos. Vea los códigos \ref{lst:inner-listener-1} y \ref{lst:inner-listener-2}.
+\item[Clase anónima:] Se registra directamente una instancia de la interface EventHandler implementando el método abstracto durante el instanciamiento. Vea el código \ref{lst:anonymous-listener}.
+\item[Lambda:] Se registra una función lambda (función anónima) definiendo su cuerpo durante el registro. Vea el código \ref{lst:lambda-listener}.
+\end{description}
+
+\subsection{Métodos de Registro de Oyentes}
+
+Toda subclase de \textsf{Node} tiene métodos de conveniencia para registrar los eventos más generales definidos en JavaFX, \textsf{setOnMouseClicked()}, \textsf{setOnKeyTyped()}, \textsf{setOnTouchMoved()}, \textsf{setOnRotate()}, entre muchos otros. El código \ref{lst:signature-type} presenta, de forma general, una firma de tipo de los métodos para registrar oyentes de eventos. Las letras en negritas son ilustrativas.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}[caption={Firma de tipo de los métodos de la clase Node para registrar oyentes},label={lst:signature-type}]
+
+public void setOn#bfEventName#bf(#bfSubclassOfEvent#bf event) 
+   
+   
+\end{lstlisting}
+\end{minipage}
+
+Adicionalmente \textsf{Node} tiene un método para registrar cualquier tipo de evento, su firma de tipo se muestra en el código \ref{lst:generic-event-method}.
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Firma de tipo del método addEventHandler()},label={lst:generic-event-method}]
+
+public final <T extends Event> void addEventHandler(EventType<T> eventType, 
+                                                   EventHandler<? super T> eventHandler)
+                                                   
+\end{lstlisting}
+\end{minipage}
+
+El primer parámetro del método indica el tipo de evento que va a estar escuchando, el segundo parámetro es el oyente.
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Implementación de oyente en clase externa},label={lst:extern-listener}]
+//Implementación del Oyente
+public interface ButtonListener implements EventHandler<ActionEvent> {
+
+    @Override
+    public void handle(ActionEvent event) {
+        ...
+        System.out.println("Do some cool stuff");
+        ...
+    }    
+}
+
+public class Layout extends BorderPane {
+
+    public void someMethod() {
+        Button btn = new Button("Click Me!");
+        btn.setOnAction(new ButtonListener()); //Registro del oyente
+        ...
+    }		
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Implementación de un oyente en clase contenedora del origen de eventos},label={lst:inner-listener-1}]
+public class Layout extends BorderPane implements EventHandler<ActionEvent> {
+
+    public void someMethod() {
+        Button btn = new Button("Click Me!");
+        btn.setOnAction(this); //Registro del oyente
+        ...
+    }	
+
+    //Implementación del Oyente	
+    @Override
+    public void handle(ActionEvent event) {
+        System.out.println("Do some cool stuff");
+    }	
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Implementación de un oyente en clase interna},label={lst:inner-listener-2}]
+public class Layout extends BorderPane {
+
+    public void someMethod() {
+        Button btn = new Button("Click Me!");
+        btn.setOnAction(new ButtonListener()); //Registro del oyente
+        ...
+    }
+    
+    class ButtonListener implements EventHandler<ActionEvent> {
+    
+        //Implementación del Oyente	
+        @Override
+        public void handle(ActionEvent event) {
+            System.out.println("Do some cool stuff");
+        }
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Implementación de oyente con clase anónima}, label={lst:anonymous-listener}]
+public class Layout extends BorderPane {
+
+    public void someMethod() {
+        Button btn = new Button("Click Me!");
+        //Registro del Oyente
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+			
+            //Implementación del Oyente	
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Do some cool stuff");
+            }		
+        });
+        ...
+    }		
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Implementación de oyente con lambda}, label={lst:lambda-listener}]
+public class Layout extends BorderPane {
+
+    public void someMethod() {
+        Button btn = new Button("Click Me!");
+        //Registro del Oyente
+        btn.setOnAction((ActionEvent e) -> {
+            System.out.println("Do some cool stuff");
+        });
+        ...
+    }		
+}
+\end{lstlisting}
+\end{minipage}
+
+\newpage
+\subsection{Ejemplos Prácticos}
+
+\subsubsection{Ejemplo 1: Manejo de Eventos de Botón}
+
+En este ejemplo se manejan eventos de botón mediante un esquema de oyente con clase externa.
+
+\begin{figure}[!htp] \centering \fboxsep=1mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/t-1-4_app-code-1}}
+\caption{Aplicación con eventos de botón}
+\end{figure}
+
+\begin{figure}[!htp] \centering \fboxsep=5mm 
+\fbox{\includegraphics[width=0.8\textwidth]{images/t-1-4_diagram-code-1}}
+\caption{Diagrama de clases de la aplicación para el manejo de eventos de botón con oyente externo}
+\end{figure}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal de la aplicación}]
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Layout root = new Layout();
+        EventHandler<ActionEvent> listener = new ActionListener(root);
+        root.addListener(listener);
+        
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Manejo de eventos de botón.");
+        primaryStage.show();
+    }
+    
+    public static void main(String [] args) { launch(); }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Layout de la interfaz gŕáfica de la aplicación}]
+public class Layout extends HBox {
+    
+    private Button greenBtn;
+    private Button blueBtn;
+
+    public Layout() { init(); }
+    
+    private void init() {
+        setAlignment(Pos.CENTER);
+        setSpacing(16);
+        
+        greenBtn = new Button("CAMBIAR FONDO A VERDE");
+        blueBtn = new Button("CAMBIAR FONDO A AZUL");
+        
+        greenBtn.setId("green-btn");
+        blueBtn.setId("blue-btn");
+
+        getChildren().addAll(greenBtn, blueBtn);
+    }
+    
+    public void addListener(EventHandler<ActionEvent> listener) {
+        greenBtn.setOnAction(listener);
+        blueBtn.setOnAction(listener);
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase que implementa EventHandler}]
+public class ActionListener implements EventHandler<ActionEvent> {
+    
+    private final Pane layout;
+
+    public ActionListener(Pane layout) {
+        this.layout = layout;
+    }
+     
+
+    @Override
+    public void handle(ActionEvent event) {
+        String sourceId = ((Node) event.getSource()).getId();
+        
+        switch(sourceId) {
+            case "green-btn":
+                layout.setBackground(new Background(
+                        new BackgroundFill(Color.GREEN, null, null)));
+                break;
+                
+            case "blue-btn":
+                layout.setBackground(new Background(
+                        new BackgroundFill(Color.BLUE, null, null)));
+                break;
+        }
+        
+    }   
+}
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Ejemplo 2: Oyente Interno - Implementación de la Interface en Contenedor}
+
+En este ejemplo se obtiene una aplicación con el mismo comportamiento que la del ejemplo anterior pero diferente en implementación de oyentes. Este oyente se implementa en la clase contenedora de los origenes de eventos (los botones).
+
+\begin{figure}[!htp] \centering \fboxsep=5mm 
+\fbox{\includegraphics[width=0.3\textwidth]{images/t-1-4_diagram-code-2}}
+\caption{Diagrama de clases de la aplicación para el manejo de eventos de botón con oyente interno}
+\end{figure}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal de la aplicación}]
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Layout root = new Layout();
+        
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Manejo de eventos de botón.");
+        primaryStage.show();
+    }
+    
+    public static void main(String [] args) { launch(); }
+}
+
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Oyente implementado en la clase Layout}]
+public class Layout extends HBox implements EventHandler<ActionEvent> {
+
+    private Button greenBtn;
+    private Button blueBtn;
+
+    public Layout() { init(); setupListener(); }
+
+    private void init() {
+        //Mismo código que en el ejemplo 1
+    }
+
+    private void setupListener() {
+        greenBtn.setOnAction(this);
+        blueBtn.setOnAction(this);
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        String sourceId = ((Node) event.getSource()).getId();
+
+        switch (sourceId) {
+            case "green-btn":
+                this.setBackground(new Background(
+                        new BackgroundFill(Color.GREEN, null, null)));
+                break;
+
+            case "blue-btn":
+                this.setBackground(new Background(
+                        new BackgroundFill(Color.BLUE, null, null)));
+                break;
+        }
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\newpage
+\subsubsection{Ejemplo 3: Oyente Interno - Implementación de la Interface en Clase interna}
+
+Similar al ejemplo 2, en este ejemplo se define el oyente dentro de la misma clase contenedora de los origenes de eventos pero se implementa en una clase interna. En el diagrama de la figura \ref{fig:example-3} se indica la clase interna mediante el conector con punta circular. El conector con punta romboidal indica que dentro de la clase \textsf{Layout} se hace uso de la clase \textsf{ActionListener}.
+
+\begin{figure}[!htp] \centering \fboxsep=5mm 
+\fbox{\includegraphics[width=0.6\textwidth]{images/t-1-4_diagram-code-3}}
+\caption{Diagrama de clases de la aplicación para el manejo de eventos de botón con oyente en clase interno}
+\label{fig:example-3}
+\end{figure}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal de la aplicación}]
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Layout root = new Layout();
+        
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Manejo de eventos de botón.");
+        primaryStage.show();
+    }
+    
+    public static void main(String [] args) { launch(); }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase interna como oyente}]
+public class Layout extends HBox {
+
+    private Button greenBtn;
+    private Button blueBtn;
+
+    public Layout() { init(); setupListener(); }
+
+    private void init() {
+        //Mismo código que en el ejemplo 1
+    }
+
+    private void setupListener() {
+        ActionListener listener = new ActionListener();
+        greenBtn.setOnAction(listener);
+        blueBtn.setOnAction(listener);
+    }
+
+    class ActionListener implements EventHandler<ActionEvent> {
+
+        @Override
+        public void handle(ActionEvent event) {
+            String sourceId = ((Node) event.getSource()).getId();
+
+            switch (sourceId) {
+                case "green-btn":
+                    Layout.this.setBackground(new Background(
+                            new BackgroundFill(Color.GREEN, null, null)));
+                    break;
+
+                case "blue-btn":
+                    Layout.this.setBackground(new Background(
+                            new BackgroundFill(Color.BLUE, null, null)));
+                    break;
+            }
+        }
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\newpage
+\subsubsection{Ejemplo 4: Implementación de oyente en clase anónima}
+
+Este método también se puede considerar una implementación interna pero se hace una distinción debido a que la implementación carece de una clase receptora de la interface.
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal de la aplicación}]
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Layout root = new Layout();
+        
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Manejo de eventos de botón.");
+        primaryStage.show();
+    }
+    
+    public static void main(String [] args) { launch(); }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase contenedora con oyente anónimo implementado}]
+public class Layout extends HBox {
+
+    private Button greenBtn;
+    private Button blueBtn;
+
+    public Layout() { init(); setupListener(); }
+
+    private void init() {
+        //Mismo código que en el ejemplo 1
+    }
+
+    private void setupListener() {
+        EventHandler listener = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String sourceId = ((Node) event.getSource()).getId();
+
+                switch (sourceId) {
+                    case "green-btn":
+                        Layout.this.setBackground(new Background(
+                                new BackgroundFill(Color.GREEN, null, null)));
+                        break;
+
+                    case "blue-btn":
+                        Layout.this.setBackground(new Background(
+                                new BackgroundFill(Color.BLUE, null, null)));
+                        break;
+                }
+            }
+        };
+        greenBtn.setOnAction(listener);
+        blueBtn.setOnAction(listener);
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Ejemplo 5: Lambda como Oyente}
+
+Las interfaces que poseen un sólo método son conocidas como interfaces funcionales, debido a que su definición como clases anónimas pueden ser sustituidas por funciones lambda.
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal de la aplicación}]
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Layout root = new Layout();
+        
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Manejo de eventos de botón.");
+        primaryStage.show();
+    }
+    
+    public static void main(String [] args) { launch(); }
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase contenedora con oyente anónimo implementado}]
+public class Layout extends HBox {
+
+    private Button greenBtn;
+    private Button blueBtn;
+
+    public Layout() { init(); setupListener(); }
+
+    private void init() {
+        //Mismo código que en el ejemplo 1
+    }
+
+    private void setupListener() {
+        EventHandler<ActionEvent> listener = (ActionEvent event) -> {
+            String sourceId = ((Node) event.getSource()).getId();
+
+            switch (sourceId) {
+                case "green-btn":
+                    Layout.this.setBackground(new Background(
+                            new BackgroundFill(Color.GREEN, null, null)));
+                    break;
+
+                case "blue-btn":
+                    Layout.this.setBackground(new Background(
+                            new BackgroundFill(Color.BLUE, null, null)));
+                    break;
+            }
+        };
+        greenBtn.setOnAction(listener);
+        blueBtn.setOnAction(listener);
+    }
+}
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Ejemplo Extra: FXML y Controladores}
+
+El esquema de construcción de interfaces mediante archivos FXML permite otra forma de atender los eventos de los componentes de la GUI.\\
+
+FXML es un lenguaje declarativo, no de programación, y es utilizado para describir la interface de usuario: los componentes que la conforman, su estructura y orden. Para definir el comportamiento de la aplicación cuando se produce algún eventos desde la GUI se utiliza código Java.\\
+
+En FXML se pueden definir uno o más controladores (oyentes) en las distintas secciones de la GUI. La vinculación de un controlador con la sección de GUI que controlará se hace mediante el atributo \textsf{fx:controller}.\\
+
+A continuación se presentan códigos de ejemplo para realizar la misma aplicación de los ejemplos anteriores utilizando FXML.
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase principal donde se construye la GUI desde el archivo FXML}]
+package fxml;
+
+//Se omiten imports
+import javafx.fxml.FXMLLoader;
+
+public class Main extends Application {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+        
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) { launch(args); }    
+}
+
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Arhivo FXML que define la GUI de la aplicación}]
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+      maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+      prefHeight="331.0" prefWidth="557.0" spacing="16.0"  alignment="CENTER" 
+      #bffx:id="container" fx:controller="fxml.Controller"#bf>
+   <children>
+      <Button mnemonicParsing="false" onAction=#bf"#changeToGreen"#bf text="CAMBIAR FONDO A VERDE" />
+      <Button mnemonicParsing="false" onAction=#bf"#changeToBlue"#bf text="CAMBIAR FONDO A AZUL" />
+   </children>
+</HBox>
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Clase controladora de los eventos de la GUI},label={lst:fxml-controller}, numbers=left, xleftmargin=\listingnumberwidth, numbersep=1em]
+package fxml;
+
+//Se omiten imports
+import javafx.fxml.FXML;
+
+public class #bfController#bf {
+    
+    #bf@FXML#bf
+    private HBox #bfcontainer#bf;
+    
+    #bf@FXML#bf
+    private void #bfchangeToGreen#bf(ActionEvent event) {
+        container.setBackground(new Background(
+                                new BackgroundFill(Color.GREEN, null, null)));
+    }
+    
+    #bf@FXML#bf
+    private void #bfchangeToBlue#bf(ActionEvent event) {
+        container.setBackground(new Background(
+                                new BackgroundFill(Color.BLUE, null, null)));
+    }
+    
+}
+\end{lstlisting}
+\end{minipage}
+\\
+
+En el código \ref{lst:fxml-controller} se utiliza la anotación \textsf{@FXML} para dos propósitos. En la línea 8 vincula el atributo que le sucede con un componente de la interface definido en el archivo FXML, el pegamento que los une son el nombre del atributo de la clase y del atributo fx:id del elemento \textsf{HBox} en el archivo FXML. La segunda función de la anotación es \verb|"|exponer\verb|"| los métodos de las líneas 12 y 18 del controlado en el archivo FXML permitiendo su asociación como oyentes de los eventos de los botones. 
+
+\end{document}
+

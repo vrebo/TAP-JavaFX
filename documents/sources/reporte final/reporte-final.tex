@@ -1,0 +1,993 @@
+\documentclass[12pt,letterpaper,final]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute,es-tabla]{babel}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=2.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tocloft}
+\usepackage[toc,page]{appendix}
+\usepackage{listings}
+\usepackage[final]{pdfpages}
+
+\renewcommand\cftchapnumwidth{2.8em}
+\renewcommand\cftsecnumwidth{2em}
+\renewcommand\cftsecindent{3em}
+\renewcommand\cftsubsecindent{5em}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{\arabic{section}}
+
+\addto\captionsspanish{%
+  \renewcommand\appendixname{Anexo}
+  \renewcommand\appendixtocname{Anexos}
+  \renewcommand\appendixpagename{Anexos}
+  \renewcommand\lstlistingname{Código}
+  \renewcommand\lstlistlistingname{Índice de códigos}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\leftmark}
+\lhead{Servicio Social - Reporte Final}
+\rfoot{Página \thepage}
+\lfoot{Victor Daniel Rebolloso Degante}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\definecolor{light-gray}{HTML}{FFFFFF}
+\definecolor{java-comment}{rgb}{0,0.5,0}
+\definecolor{java-keyword}{rgb}{0.13,0.13,1}
+\definecolor{java-literal}{rgb}{0,0.6,0}
+\definecolor{java-annotation}{rgb}{0.46,0.45,0.48}
+\definecolor{java-string}{HTML}{CE7B00}
+\definecolor{java-const}{HTML}{6600CC}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  language=Java,
+  framesep=5pt,
+  frame=Trbl,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{java-comment},
+  keywordstyle=\bfseries\color{java-keyword},
+  stringstyle=\color{java-string},
+  morecomment=[s][\color{gray}]{@}{\ },
+  moredelim={[is][\bf]{\#bf}{\#bf}},
+}
+
+
+\fboxsep=6mm 	%Añade un espacio enter el marco y el contenido de un \fbox{}
+\fboxrule=1pt 	%Modifica el grosor del marco de \fbox{}
+
+\begin{document}
+
+\begin{titlepage}
+
+	\raggedright
+	{\scshape\large Tecnológico Nacional de México \par}
+	{\scshape\LARGE Instituto Tecnológico de Veracruz \par}
+	\vspace{5cm}
+	\centering
+	{\scshape\Large Reporte Final\par}
+	\vspace{0.5cm}
+	{\scshape\Huge Desarrollo de Aplicaciones con JavaFX Utilizando la Arquitectura MVC\par}
+	\vspace{4cm}
+	{\raggedleft
+	\normalsize
+	\hspace{5cm}
+	Reporte final de actividaes de servicio social\par}	
+	\vfill
+	\raggedright
+	elaborado por\par
+	{\scshape \large Victor Daniel Rebolloso Degante\par}
+	{\footnotesize Estudiante de Ingeniería en Sistemas Computacionales\par con número de control E12020839}\par
+	\vspace{1cm}
+	supervisado por\par
+	{\scshape MC. Rafael Rivera López}\par {\footnotesize Profesor - Investigador, Departamento de Sistemas y Computación \par Instituto Tecnológico de Veracruz}
+
+	\vfill
+	\centering
+	{\scshape \normalsize Ingeniería en Sistemas Computacionales\par}
+	\vspace{1cm}
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\pagenumbering{Roman}
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\lstlistoflistings
+
+\chapter{Marco Metodológico}
+\pagenumbering{arabic}
+
+\section{Antecedentes}
+
+Todo programa de computadora necesita un medio para que los usuarios puedan interactuar y hacer uso de él. Antaño, acorde a las necesidades del momento, las interfaces usuario-máquina de los programas eran simples líneas de comando en las que un usuario introducia una instrucción al programa en forma de texto y en consecuencia se ejecutaba la rutina programada. Las interacciones eran sencillas.
+
+Al pasar el tiempo las necesidades sobre los sistemas computacionales fueron cambiando, las expectativas de formas más rápidas y visuales de utilizar los programas aumentaron y así llegaron los primeros sistemas operativos con interfaces gráficas. A causa de ello los programas tuvieron que adaptarse a los nuevos entornos en los que serían ejecutados. Se consiguieron ventanas con componentes visuales que organizaban la información que contenían y además ofrecían un comportamiento funcional como seleccionar una opción, recibir entradas de texto o números, mostrar avisos informativos o de advertencia, etc.
+
+El tiempo continúo su curso y las tecnologías fueron avanzando con él. Mejoras estéticas y componentes visuales más complejos fueron generandose. Ahora los usuarios requieren facilidad para aprender a interactuar con los programas, que las interfaces sea intuitivas.\\
+
+Java es un lenguaje con el que se pueden desarrollar aplicaciones de escritorio para diversos fines. Fue lanzado en 1995 y desde su inicio hasta hoy en día goza de popularidad y preferencia de desarrolladores y empresas para utilizarlo en sus proyectos.
+
+ Desde su primera versión posee una herramienta para la creación de interfaces de usuario y esta ha ido mejorando y cambiando entre versiones. Java 8 fue liberado en el año 2014 y actualmente es la versión estable más reciente del lenguaje. Entre las mejoras incluidas en esta versión se encuenta JavaFX, un framework para la construcción de Interfaces de Gráficas de Usuario (GUIs) para aplicaciones en Java.
+
+Para los programadores que utilizan tecnología Java, JavaFX es un cambio relevante. Su importancia radica en que es un paso hacia la modernización de los métodos de construcción de GUIs luego de los casi 19 años de permanencia de las herramientas Swing y AWT, JavaFX fue creado con el propósito de sustituir a sus predecesoras.\\
+
+El plan {\sc ISC-2010-224} de la carrera Ingeniería en Sistemas Computacionales en el Instituto Tecnológico de Veracruz incluye varias materias que preparan al estudiante en diversos temas y métodos para elaborar programas de computadora.
+
+Tópicos Avanzados de Programación (TAP) es una materia que corresponde al cuatro semestre de la carrera de ISC, durante el curso se ven temas como Interfaces Gráficas de Usuarios, Computación Gráfica, Programación Orientada a Eventos y Concurrencia entre otros. Los cursos de TAP son independientes de cualquier lenguaje de programación, sin embargo, es común que se impartan utilizando el lenguaje Java para llevar la parte práctica de los temas, tal es el caso del MC. Rafael Rivera López quien ha impartido el curso utilizando Java durante varios años.\\
+
+
+Hasta la fecha sólo se han utilizado versiones previas a Java 8 en los cursos y en consecuencia, poco se ha visto de las nuevas características del lenguaje su nueva herramienta JavaFX.
+
+\section{Definición del Problema}
+
+Dentro del Instituto Tecnológico de Veracruz se utiliza material didáctico que explica temas sobre la creación de interfaces gráficas de usuario para aplicaciones Java utilizando Swing, una herramienta funcional y útil pero que se pretende sea sustituida por JavaFX. Hasta la fecha no existe un material que explique los mismos temas utilizando la herramienta JavaFX.
+
+\section{Objetivos}
+
+\subsection{Objetivo General}
+
+Explorar las capacidades de la tecnología JavaFX en la construcción de interfaces gráficas de usuario para aplicaciones Java y evaluar la viabilidad de su integración como herramienta de enseñanza en los cursos de Tópicos Avanzados de Programación impartido en actual plan de estudios de la carrera de Ingeniería en Sistemas Computacionales en el Instituto Tenológico de Veracruz. 
+
+\subsection{Objetivos Específicos}
+
+Como objetivos particulares de este trabajo se establecieron los siguientes:
+
+\begin{enumerate}
+\item Recopilar literatura referente a la tecnología JavaFX que sirva como referencia para desarrollar el resto de objetivos del proyecto.
+\item Elaborar documentos que expliquen los temas:
+	\begin{itemize}
+	\item Elementos de una interface gráfica,
+	\item Librerías de Interfaz Gráfica,
+	\item Computación Gráfica,
+	\item Programación Orientada a Eventos y
+	\item Arquitectura MVC.
+	\end{itemize}
+	utilizando JavaFX y que puedan ser empleados en la enseñanza de los temas mencionados en la materia Tópicos Avanzados de Programación.
+\item Crear un conjunto de códigos de programación que ejemplifiquen de forma práctica los temas mencionados previamente.
+\end{enumerate}
+
+\subsection{Justificación}
+%¿Cuáles son los beneficios que este trabajo aportará y por qué?
+Se obtendrá material didáctico sobre temas importantes en la formación de los estudiantes de la carrera de Ingeniería en Sistemas Computacionales (ISC) explicados con la nueva herramienta de construcción de GUIs para aplicaciones de uno de los lenguajes de programación más utilizados en el ámbito académico y solicitados en el ejercicio de una profesión.\\
+
+Se ofrece una alternativa nueva para la enseñanza de TAP, temas que hasta la fecha se han explicado con otras tecnologías como Swing de Java, la actual opción predilecta. Un motivo importante de la creación de este material es que Swing, a pesar de su permanencia y disponibilidad para los programadores, es una herramienta que ya no recibirá más actualizaciones por parte de Oracle, siendo JavaFX la nueva apuesta para la creación de interfaces gráficas de usuario.\\
+
+%¿Quienes serán los beneficiados y por qué?
+
+Los beneficiados inmediatos son los estudiantes de ingeniería en sistemas computacionales pues tienen una opción más fresca para aprender la construcción de interfaces gráficas de usuario con el lenguaje Java; beneficiados secundarios son todos aquellos interesados en conocer las cualidades y capacidades básicas del framework JavaFX.\\
+
+%¿Cuál es su utilidad? %¿Por qué es significativa la investigación?
+%¿Qué aportará este trabajo?
+
+El producto obtenido no es de provecho sólo por el hecho de ser un material que habla de una herramienta nueva (JavaFX), sino que esta herramienta fue creada por Oracle con el objetivo de {\bf facilitar las actividades de desarrollo de las interfaces gráficas} incorporando esquemas manejados por otras tecnologías, y {\bf mejorar su desempeño} gracias a estrategías de optimización de renderizado de los componentes gráficos.
+
+\subsection{Alcance y Limitaciones}
+
+El desarrollo del material se limitará sólo a la primera unidad temática del actual curso de Tópicos Avanzados de Programación impartido por el profesor MC. Rafael Rivera López.\\
+
+Se tomará el material actual del MC. Rafael Rivera como base para su actualización a JavaFX. Se sustituirán directamente los temas que no necesiten explicación a detalle sobre JavaFX, se añadirán explicaciones complementarias en los temas que lo requieran y excluirán los temas que ya no apliquen en la nueva tecnología.
+
+\chapter{Marco Teórico}
+
+\section{Java}
+
+Java fue lanzado en 1995 por la compañia Sun Microsystems como un lenguaje de programación orientado a objetos para multiples plataformas. Sun estuvo encargado de su desarrollo y soporte hasta el 2010, año en que fue adquirido por Oracle. Su última versión, Java 8, fue liberada en marzo del 2014 y en ella se añadieron mejoras al lenguaje como algunas carácteristicas del paradigma de programación funcional (uso de flujos de colecciones, interfaces funcionales y su versión simplificada las funciones lambda por ejemplo), además de que se incluyó JavaFX para la creación de GUIs.\\
+
+
+El eslogan de Java fue durante mucho tiempo WORA, un acrónimo de la frase en inglés Write Once Run Anywhere (escribe una vez y corre/ejecuta donde sea), que hace referencia a su cualidad de lenguaje multiplaforma. Esta característica es posible debido a la Java Virtual Machine, el motor que permite ejecutar código escrito en Java en cualquier computadora sin importar su arquitectura física.\\
+
+Actualmente con Java es posible crear sistemas para plataformas de escritorio usando Swing y JavaFX, para plataformas web con el estándar JEE y para plataformas móviles con el Software Development Kit de Android.
+
+\section{Arquitectura Modelo-Vista-Controlador}
+
+Un patrón arquitectónico es una descripción abstracta de una arquitectura de software que ha sido utilizada exitosamente y que es producto de buenas prácticas de desarrollo de software. En esencia, el patrón de diseño Modelo Vista Controlador (MVC) consiste en dividir conceptualmente la arquitectura de un sistema y, en la medida de lo posible, la implementación de la misma en componentes que pertenezcan a una de tres categorías, Modelo, Vista y
+Controlador.\\
+
+Dentro de la categoría de Modelo se ubican aquellos componentes encargados de: encapsular los datos utilizados en el sistema, representar el comportamiento de las entidades involucradas en los procesos de negocio y realizar tareas de persistencia de datos.\\
+
+La categoría de Vista contiene los componentes con los que el usuario interactúa directamente, comúnmente también se les refiere como el front-end del sistema. Es importante notar la independencia entre la vista y el modelo. Modificaciones en los componentes que pertenecen a la vista no necesariamente
+implican modificaciones en el modelo y viceversa.\\
+
+Por último, los componentes pertenecientes a la categoría Controlador se encargan de atender las peticiones del usuario solicitadas a través de los componentes de la Vista haciendo uso de los componentes del Modelo. Los controladores son el puente entre el Modelo y la Vistas del sistema.\\
+
+Algunos de los beneficios de desarrollar un sistema bajo el patrón MVC son:
+
+\begin{itemize}
+\item Simplifica el desarrollo brindando un desglose su arquitectura.
+\item Separa las distintas responsabilidades (lógica de negocios, interfaz de usuario) de sus componentes.
+\item Facilita su mantenibilidad.
+\end{itemize}
+
+\section{Evolución de GUI Toolkits}
+
+Con el pasar del tiempo la necesidad de interfaces usuario-sistema ha evolucionado. Actualmente, las computadoras para uso personal son algo cotidiano y el alcance de las aplicaciones es muy extenso, por lo que una aplicación que pretenda ser bien recibida por un amplio público necesita una interfaz con controles gráficos que simplifiquen su uso. Para tal propósito, las diferentes compañías que han estado a cargo del desarrollo de Java han equipado al Java Development Kit con distintas GUI Toolkits desde la segunda versión del lenguaje.\\
+
+Se presenta un recuento muy condensado de las GUI Tookits que han acompañado al lenguaje Java a lo largo de su historia previo a la llegada de JavaFX. También se mencionan otras toolkits para Java desarrolladas por terceros y se presenta el caso particular de Adobe Flex para Adobe Flash con el propósito de tener una base comparativa más completa para contrastar con JavaFX.\\
+
+La figura \ref{img:gui-evolucion} muestra una red de la evolución de las GUI toolkits de Java y su relación con otras tecnologías.
+
+\begin{figure}[!htbp] \centering
+\fbox{\includegraphics[width=0.8\textwidth]{images/gui-evolution}}
+\caption{Evolución de las herramientas de creación de interfaces gráficas.}
+\label{img:gui-evolucion}
+\end{figure}
+
+
+\subsection*{Abstract Window Toolkit (AWT) - 1996}
+
+\begin{itemize}	\itemsep0em
+\item Primera toolkit para la creación de interfaces gráficas con Java.
+\item El renderizado de los componentes gráficos era realizado por el sistema operativo.
+\item Sus componentes gráficos se consideran componentes pesados pues al crearse un componente en código Java también se creaba un componente gráfico nativo por el sistema operativo.
+\item Apariencia (Look and Feel) variable dependiendo de la plataforma en que corriera la aplicación.
+\item Conjunto de componentes limitado a los componentes estándar admitidos por las diversas plataformas.
+\end{itemize}
+
+\subsection*{Internet Foundation Classes (IFC) - 1996}
+
+\begin{itemize} \itemsep0em
+\item Desarrollado por Netscape.
+\item Primera UI toolkit independiente de plataforma. 
+\item El renderizado de los componentes era realizado por Java, no el SO.
+\item Soporte para Applets en el navegador Netscape.
+\end{itemize}
+
+\subsection*{Java Foundation Classes (JFC) - 1998}
+
+\begin{itemize} \itemsep0em
+\item Es resultado de la integración de IFC en Java.
+\item Da soporte para AWT.
+\item Contiene la Java2D API para el dibujo de primitivas gráficas.
+\item Se incluye Swing como nueva UI toolkit.
+\begin{itemize}
+\item Amplio conjunto de componentes gráficos.
+\item Componentes construidos con la arquitectura Modelo Vista Controlador.
+\item Componentes ligeros pues Java se encarga completamente del renderizado.
+\item Provee un API para la configuración del LAF de los componentes.
+\end{itemize}
+
+\end{itemize}
+
+\subsection*{Java Foundation Classes (JFC) - 1998}
+
+\begin{itemize}\itemsep0em
+\item Es resultado de la integración de IFC en Java.
+\item Da soporte para AWT.
+\item Contiene la Java2D API para el dibujo de primitivas gráficas.
+\item Se incluye Swing como nueva UI toolkit.
+	\begin{itemize}
+	\item Amplio conjunto de componentes gráficos.
+	\item Componentes construidos con la arquitectura Modelo Vista Controlador.
+	\item Componentes ligeros pues Java se encarga completamente del renderizado.
+	\item Provee un API para la configuración del LAF de los componentes.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Standard Widget Toolkit (SWT) - 1998}
+
+\begin{itemize} \itemsep0em
+\item Desarrollado por la Eclipse Foundation.
+\item Está basado en el IBM Common Widget Toolkit para el lenguaje SmallTalk.
+\item Posee un Look and Feel y desempeño nativo.
+\item Tal como lo hace AWT, SWT provee envolvedores al rededor de componentes nativos del SO.
+\item Los componentes que no son soportados por el SO son emulados con Java, similar al modo de Swing.
+\end{itemize}
+
+\subsection*{JavaFX 1.X - 2008}
+
+\begin{itemize} \itemsep0em
+\item Derivado del proyecto F3 se crea la primera versión de JavaFX.
+\item Desarrollado con el propósito de facilitar la creación de Rich Internet Applications.
+\item Incluye JavaFX Script, un lenguaje declarativo para definir interfaces gráficas.
+\item Facilita la creación de aplicaciones para las siguientes plataformas:
+	\begin{itemize} \itemsep0em
+	\item Escritorio
+	\item Móviles
+	\item Web
+	\item Televisores
+	\item Blu-ray 
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Apache Flex Spark- 2010}
+
+\begin{itemize} \itemsep0em
+\item Framework para la creación de clientes enriquecidos en lenguaje ActionScript (Flash).
+\item Posee la librería MXLM que hace uso de un archivo en formato XML para la definición de interfaces gráficas.
+\item Similar a MVC separa la vista en los archivos MXML y los controladores y modelos en código ActionScript.
+\item Soporta efectos y animaciones para los componentes de la interfaz.
+\end{itemize}
+
+\subsection*{JavaFX 2.X - 2011}
+
+\begin{itemize} \itemsep0em
+\item Finalizó el soporte a JavaFX Script, en su lugar se permite la creación de interfaces gráficas mediante APIs de Java y el uso de ficheros FXML.
+\item Se incluyó la capacidad de realizar animaciones, transformaciones y efectos en componentes de la interfaz gráfica.
+\item Fue añadida la interoperabilidad con Swing.
+\item Integración de un componente web que permite tener contenido HTML y ejecutar código JavaScript de forma embebida.
+\end{itemize}
+
+\subsection*{JavaFX 8 - 2014}
+
+\begin{itemize} \itemsep0em
+\item Soporte nativo para gráficas 3D.
+\item Soporte para uso de sensores.
+\item Versión incluida dentro de la edición estándar de Java.
+\item Fue añadida API para impresión.
+\item Nuevo conjunto de componentes gráficos añadidos.
+\end{itemize}
+
+\section{JavaFX}
+
+JavaFX es el sucesor de Swing como toolkit en la creación de interfaces gráficas para aplicaciones de escritorio escritas en lenguaje Java. Su última versión, JavaFX 8, es distribuida junto al Java Development Kit y Java Runtime Enviroment. Incluye APIs para dibujo de primitivas gráficas en 2D, construcción y renderizado de figuras 3D, y manejo de archivos multimedia por mencionar algunas. También posee un basto conjunto de componentes (botones, tablas, listas, etc) para la creación de interfaces gráficas.\\ 
+
+Además, la última versión integra el uso de estándares web para la personalización de la apariencia de los componentes gráficos, separando el diseño y la programación de la lógica de negocios de las aplicaciones. Actualmente, Oracle desarrolla y soporta JavaFX, y desde 2011 se volvió una tecnología Open Source.\\
+
+Debido a su trayectoria histórica, JavaFX es el resultado de incorporar aquellos aspectos de provecho de sus predecesores y algunas virtudes de herramientas de GUI de otras tecnologías. JavaFX facilita la creación de aplicaciones bajo la arquitectura MVC y debido a la división entre la lógica y la presentación, se obtiene el benefició de mantenibilidad de las aplicaciones y se agiliza su desarrollo. La unión de la arquitectura MVC, el uso de archivos FXML en la definición de interfaces, la incorporación de hojas de estilo CSS para la personalización de la presentación de los componentes y las APIs para el empleo de archivos multimedia dota al desarrollador con la capacidad de crear interfaces que mejoren la experiencia del usuario.\\
+
+Haciendo una comparativa con su predecesor Swing, JavaFX es superior en los siguientes aspectos.
+\begin{description} \itemsep0em
+\item[Recursos:] La cantidad de recursos requeridos para la ejecución de aplicaciones es menor debido a la incorporación de estrategias de optimización durante el renderizado.
+\item[Componentes:] Tiene un conjunto de componentes gráficos y layouts más diverso y actualizado.
+\item[Usabilidad:] Gracias a FXML, JavaFX simplifica cosas que con Swing y Java2D serían complejas de realizar.
+\item[3D:] Da soporte a gráficas en 3D sin necesidad de alguna otra librería.
+\end{description}
+
+\subsection{Arquitectura}
+
+JavaFX posee una arquitectura compuesta de varios elementos, la figura \ref{img:javafx-architecture} muestra su esquema arquitectónico.
+Algunos autores dividen su arquitectura simplemente en bloques y otros en capas, aquí se presenta la división en capas.
+
+\begin{figure}[!htbp] \centering
+\fbox{\includegraphics[width=0.9\textwidth]{images/javafx-architecture.png}}
+\caption{Arquitectura de JavaFX}
+\label{img:javafx-architecture}
+\end{figure}
+
+\subsubsection{Capa Nativa}
+
+La capa nativa es la capa inferior de la arquitectura. Se compone (en su mayoría) de librerías no escritas en Java que dan acceso a la capa nativa del SO; entre estas librerías se encuentran D3D y OpenGL que son implementaciones de Prism, una tecnología para el renderizado mediante hardware o software de componentes gráficos. 
+
+También se incluyen motores para contenido web y multimedia, estos motores permiten embeber páginas HTML que hagan uso de CSS y JavaScript dentro de aplicaciones de JavaFX así como vídeos y música que enriquezca la experiencia del usuario. Otro componente de esta capa es el Glass Window Toolkit; este componente es el más bajo en el stack gráfico de JavaFX, entre otras cosas su principal función es proveer servicios operativos nativos como la administración de ventanas, temporizadores, superficies y la cola de eventos. 
+
+Debido a que los componentes nativos son específicos para cada SO algunas características de la capa nativa están condicionadas a la disponibilidad de estos componentes en la plataforma. Se puede comprobar la disponibilidad de estas características mediante código.
+
+\subsubsection{Capa Privada}
+
+En la capa privada se encuentra el sistema gráfico de JavaFX. Dos aceleradores forman este sistema: el primero es Prism, que como se mencionó antes, es encargado de los trabajos de renderizado vía hardware y software de las escenas de JavaFX; el segundo es el Quantum Toolkit cuya tarea es ligar Prism con el Glass Windowing Toolkit y hacerlos disponibles para la capa superior.
+
+\subsubsection{Capa Pública}
+
+La capa pública es la más importante para el desarrollador, en ella se encuentran las APIs necesarias para el desarrollo de aplicaciones. En este mismo nivel se incluye el Scene Graph como método de construcción/representación de las interfaces gráficas de usuario. La tabla \ref{table:javafx-apis} lista todos los paquetes de la API pública y da una breve descripción de cada uno.
+
+
+\begin{table} \footnotesize \centering
+	\caption{Paquetes provistos en la API pública de JavaFX}
+	\label{table:javafx-apis}
+    \begin{tabular}{l p{0.1cm} p{12cm}}
+    \toprule[1.5pt]
+   	\textbf{Paquete} 		& & \textbf{Descripción} \\
+    \midrule[1.5pt]
+	javafx.animation 		& & Contiene clases para el uso de animaciones basadas en transiciones \\
+	javafx.application 		& & Provee las clases del ciclo de vida de la aplicación \\ 
+	javafx.beans 			& & Contiene las clases que definen las API para hacer las propiedades vinculables a cambios  \\ 
+	javafx.collections 		& & Colecciones y utilidades esenciales para observar y reaccionar a cambios en el contenido de las colecciones  \\ 
+	javafx.concurrent 		& & Clases de ayuda para el manejo de procesos asíncronos \\ 
+	javafx.css 				& & Provee APIs para hacer que las propiedades de los componentes gráficos sean personalizables vía CSS \\
+	javafx.event 			& & Clases para la definición y el manejo de eventos en componentes de la interface \\
+	javafx.fxml 			& & Contiene clases para la manipulación de archivos fxml \\
+	javafx.geometry 		& & Conjunto de clases para la definición y operación de formas 2D \\
+	javafx.print 			& & Clases para la impresión de archivos \\
+	javafx.scene 			& & Conjunto principal de clases para la construcción del Scene Graph \\ 
+	javafx.stage 			& & Contiene clases de contenedores de "alto nivel" como ventanas o pop-ups \\
+	javafx.util 			& & Clases de utilidad y ayuda \\
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table} 
+
+
+\section{eXtensible Markup Language}
+
+%¿Qué significa? %¿Cuál es su propósito?
+El lenguaje extensible de marcado, abreviado XML, es un lenguaje basado en etiquetas similar a HTML cuyo propósito es describir objetos de datos llamados documentos XML para almacenar, transportar, y en general, compartir datos a través entre distintas aplicaciones y sistemas.\\
+
+El lenguaje fue desarrollado en 1996 por un grupo patrocinado por el World Wide Web Consortium, una comunidad internacional que desarrolla estandares abiertos para asegurar y promover el crecimiento a largo plazo de la Web.\\
+
+Estas son la metas con que fue diseñado XML:
+
+\begin{enumerate}
+%XML shall be straightforwardly usable over the Internet.
+\item Debe ser fácilmente utilizable sobre internet.
+
+%XML shall support a wide variety of applications.
+\item Debe soportar una amplia variedad de aplicaciones.
+
+%XML shall be compatible with SGML.
+\item Debe ser compatible con SGML (Standard Generalized Markup Language) un estándar para definir lenguajes de marcado.
+
+%It shall be easy to write programs which process XML documents.
+\item Debe ser sencillo escribir programas que procesen documentos XML.
+
+%The number of optional features in XML is to be kept to the absolute minimum, ideally zero.
+\item El número de características opcionales en XML debe mantenerse el su mínumo absoluto, idealmente cero.
+
+%XML documents should be human-legible and reasonably clear.
+\item Los documentos XML deben ser legibles para los humanos y razonablemente claros.
+
+%The XML design should be prepared quickly.
+\item El diseño de XML debe ser preparado rápidamente.
+
+%The design of XML shall be formal and concise.
+\item El diseño de XML debe ser formal y conciso.
+
+%XML documents shall be easy to create.
+\item Debe ser fácil crear documentos XML.
+
+%Terseness in XML markup is of minimal importance.
+\item La brevedad en el etiquetado XML es de mínima importancia.
+
+\end{enumerate}
+
+\subsection{Documentos Bien Formados}
+
+Se considera que un documento XML está bien formado si cumple con los siguientes puntos:
+
+\begin{itemize}
+\item Sólo contiene un elemento raíz que es el inicio de la estructura del documento.
+
+\item Si una etiqueta de apertura se encuentra dentro de un elemento A su correspondiente etiqueta de cierre debe estar dentro del mismo elemento A.
+
+\item Cumple con las reglas sintácticas para definir un documento XML.
+\end{itemize}
+
+En consecuencia cualquier documento bien formado podrá ser validado y manipulado por cualquier procesador XML.
+
+%¿Cuál es su estructura?
+
+\subsection{Estructura Lógica}
+
+Los documentos XML se componen esencialmente de tres tipos de componentes: elementos, elementos vacíos y atributos.
+
+\begin{description}
+\item[Elemento: ] Un elemento tiene asignado un nombre para la etiqueta que lo representa. Los límites del elemento dentro de un documento están determinados por una etiqueta de apertura y otra etiqueta de cierre identificada con el nombre del elemento. Dentro de sí un elemento puede contener a cualquier otro elemento. Los elementos pueden tener atributos que lo describen, estos se ubican dentro de su etiqueta de apertura.
+
+\item[Elemento vacío: ] Este caso especial de elemento no contiene a ningún otro dentro de su cuerpo y por lo tanto no es necesario el uso de etiquetas de apertura y cierre, en su lugar se ocupa una etiqueta vacía. Los elementos vacíos pueden contener atributos.
+
+\item[Atributos: ] Los atributos dan información extra sobre el elemento en que se colocan. Se escriben siguiendo un formato clave-valor.
+\end{description}
+
+El código \ref{lst:xml-example} presenta ejemplos de los tres tipos de componentes descritos. Las líneas que se encuentran entre \verb|"|
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Ejemplos de elemento, elemento vació y elementos con atributos}, label={lst:xml-example}, language={XML}]
+<!-- *** Elemento con contenido ***************** -->
+
+<!-- Etiqueta de apertura -->
+<carta> 
+ <!-- Elemento interno -->
+ <destinatario> 
+    Pancha 
+ </destinatario>
+
+ <remitente>
+    Pedro
+ </remitente>
+ 
+ <mensaje>
+    Estimada Pancha,
+    
+    ¿Cuánto tiempo ha pasado desde nuestra última carta? Últimamente he...
+ </mensaje>
+<!-- Etiqueta de cierre -->
+</carta>
+
+
+<!-- *** Elemento vacío ************************* -->
+
+<imagen />
+
+<!-- *** Elemento con contenido y atributos ***** -->
+
+<carta fecha="22/12/2017" > <!-- Atributos -->
+ ...
+ <mensaje>
+    ...
+ </mensaje>
+</carta>
+
+<!-- *** Elemento vacío y con atributos ********* -->
+
+<imagen descripcion="La imagen." fuente="http://someaddress.com/imagen.png" />
+
+\end{lstlisting}
+\end{minipage}\\
+
+%¿Por qué es necesario mencionalos?
+XML puede ser extendido para definir un subconjuto del lenguaje con restricciones sintácticas más específicas. Comúnmente la especialización de este XML en un dialecto es para delimitar el layout de los documentos XML que manipulará una aplicación/sistema para un propósito muy particular, tal es el caso del lenguaje FXML utilizado por JavaFX.\\
+
+%FUENTES
+
+%https://www.w3.org/TR/REC-xml/
+%https://www.w3.org
+
+\section{FX Markup Language}
+
+FXML es un dialecto derivado de XML creado por Oracle para ser utilizado dentro de la tecnología de JavaFX. FXML es un lenguaje declarativo tal como XML pero su propósito no es almacenar información o ser usado para transmitir datos, su función es describir el diseño y disposición (layout) de los componentes de las interfaces gráficas de usuario. El dialecto es simimilar al esquema manejado en HTML con la diferencia que las etiquetas predefinidas en FXML corresponden, en su mayoría, a clases de Java incluida que representan controles y/o contenedores de los componentes gráficos.\\
+
+El código \ref{lst:fxml-example} es un ejemplo de una ventana de chat (véase figura \ref{fig:chat-fxml}) elaborada descrita en un documento FXML.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.7\textwidth]{images/chat}}
+\caption{Captura de pantalla a la interfaz del chat}
+\label{fig:chat-fxml}
+\end{figure} 
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Ejemplos de elemento, elemento vació y elementos con atributos}, label={lst:fxml-example}, language={XML}]
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" 
+	minHeight="-Infinity" minWidth="-Infinity"
+	prefHeight="400.0" prefWidth="600.0" 
+	xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu text="_Archivo">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Abrir" />
+              <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Salir" />
+            </items>
+          </Menu>
+          <Menu text="_Editar">
+            <items>
+            	<MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu text="A_yuda">
+            <items>
+            	<MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <StackPane VBox.vgrow="ALWAYS">
+         <padding>
+         	<Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <children>
+         	<TextArea prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </StackPane>
+      <HBox spacing="4.0" VBox.vgrow="NEVER">
+         <children>
+            <TextField promptText="Escribe tu mensaje..." HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" text="ENVIAR" />
+         </children>
+         <padding>
+         	<Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
+\end{lstlisting}
+\end{minipage}\\
+
+
+%FUENTES
+%https://docs.oracle.com/javase/8/javafx/api/javafx/fxml/doc-files/introduction_to_fxml.html
+
+\section{Cascading Style Sheets}
+Las hojas de estilo en cascada (de su traducción del Inglés Cascading Style Sheets) son un mecanismo que permite añadir estilo a los documentos web. Su uso delega la responsabilidad de definir la presentación de los documentos a los archivos CSS y se evita la práctica poco recomendable de añadir estilos mediante los elementos del documento.\\
+
+CSS es un lenguaje basado reglas, las cuales describen al navegador como presentar los elementos de HTML. A diferencia de otros lenguajes, CSS no tiene versiones, en su lugar tiene niveles siendo el último el nivel 3.
+
+\subsection{CSS \& FXML}
+
+La tecnología CSS con XML y de la misma forma que se pueden dar estilos a los elementos en documentos HTML se puede hacer con FXML. JavaFX también define un conjunto de atributos para definir reglas de presentación visual que influirán en la apariencia de los componentes visuales de la interface gráfica.
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.7\textwidth]{images/chat-styles}}
+\caption{Captura de pantalla a la interfaz del chat con estilos modificados por CSS}
+\label{fig:chat-css}
+\end{figure} 
+
+\begin{minipage}[t]{0.95\textwidth}
+\begin{lstlisting}[caption={Estilo CSS para modificar la apariencia de los componentes de la GUI}]
+.button {
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 2, 0.3, 0, 2);
+    -fx-border-radius: 0px 0px 0px 0px;
+    -fx-background-color: rgb(96,125,139);
+    -fx-padding: 6px 16px 6px 16px;
+    -fx-text-fill: white;
+}
+
+.menu-bar {
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.4), 2, 0.3, 0, 2);
+    -fx-background-color: rgb(96,125,139);
+    -fx-min-height: 20px;
+}
+
+.menu {
+    -fx-padding: 8px 8px 8px 8px;
+}
+
+.menu .label {
+    -fx-text-fill: white;
+    -fx-font-size: 11pt ;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+    -fx-font-size: 9pt ;
+}
+
+.main-container {
+    -fx-background-color: #FAFAFA;
+}
+
+.text-field {
+    -fx-background-color: null;
+    -fx-border-color: rgba(0,0,0,0) rgba(0,0,0,0) #cccccc rgba(0,0,0,0);
+    -fx-border-width: 0 0 2px 0;
+}
+\end{lstlisting}
+\end{minipage}\\
+
+%http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html
+
+\chapter{Desarrollo}
+
+\section{Enfoque metodológico}
+
+Se considera el presente trabajo como un proyecto de investigación documental con enfoque pragmático orientado a la generación de material didáctico para la explicación los temas planteados en los objetivos guardando estrecha relación con la tecnología JavaFX.\\
+
+La literatura utilizada para fundamentar el desarrollo de este trabajo proviene de fuentes editoriales oficiales como Apress y la propia compañia Oracle creadora de JavaFX. Otra fuente importante de información utilizada como complemento a la literatura editorial fueron los sitios web oficiales de la World Wide Web Consortium y Oracle. Por último, sitios de web de consulta para resolución de dudas y problemas de programación como Stackoverflow, CodeRanch, Quora, TexExchange, entre otros, fueron de gran ayuda en la elaboración del material didáctico.  	
+
+\section{Identificación de la información pertinente}
+
+Partiendo de los temas planteados en los objetivos del proyecto se seleccionó de la literatura recopilada aquella información relacionada a los siguientes temas:
+
+\begin{itemize}
+\item Historia de las GUIs Toolkits para la creación de interfaces gráficas de usuario en Java.
+\item Catálogo de componentes gráficos de las GUIs Toolkits de Java.
+\item Características de JavaFX.
+\item Construcción programática de GUIs (código Java).
+\item Construcción declarativa de GUIs (documentos FXML).
+\item Gráficas 2D con JavaFX.
+\item Esquema de JavaFX para el manejo de eventos en GUIs.
+\item Esquema MVC y JavaFX.
+\end{itemize}
+
+\section{Procedimiento}
+
+Durante el ejercio de las actividades de este proyecto de servicio social se siguió el procedimiento descrito a continuación:
+
+\begin{enumerate}
+\item Estudio del material actual de tópicos avanzados de programación del MC. Rafael Rivera López.
+\item Estudio de la literatura recopilada de JavaFX.
+\item Identificar de los temas y ejemplos clasificandolos con el siguiente criterio: 
+
+	\begin{description}
+	\item[Actualización Directa:] El tema o ejemplo se puede explicar con JavaFX directamente sin necesidad de explicación extra.
+	\item[Explicación Complementaria:] La actualización requere añadir una explicación complementaria para asgurar la claridad del tema.
+	\item[Eliminación por Incompatibilidad:] El tema no se adapta al esquema utilizado por JavaFX o las actualizaciones son a tal grado que cambia significativamente el método de explicación original.
+	\end{description}
+\item Compilación de la información y redacción de los temas actualizados.
+\item Elaboración de diagramas e imágenes requeridas para ejemplificar los temas actualizados.
+\item Elaboración de los códigos de ejemplo necesarios siguiendo el patrón MVC.
+\item Integración de la información, diagramas y códigos de ejemplo en documentos PDF siguiendo la organización de los documentos de material didáctico originales.
+\end{enumerate}
+
+El procedimiento anterior se realizó para cada uno de los archivos en formato PDF del material original correspondientes a la primera unidad, Elementos de Interfaces Gráficas, del curso de Tópicos Avanzados de Programación.
+
+\chapter{Resultados}
+
+Como resultado de este proyecto se obtuvo material didáctico en archivos con formato PDF y paquetes de códigos de ejemplos. El material se puede obtener en éste\footnote{https://github.com/vrebo/TAP-JavaFX} vínculo.
+
+\section{Material Didáctico en PDF}
+
+En la tabla \ref{table:material-files} se enlistan los archivos actualizados con los temas sobre JavaFX. La tabla presenta el nombre del archivo, una breve descripción y el anexo donde se puede encontrar.
+
+\begin{table}[h] \footnotesize \centering
+	\caption{Archivos PDF del material didáctico}
+	\label{table:material-files}
+    \begin{tabular}{p{5.5cm} p{0.05cm} p{5.5cm} p{0.05cm} l}
+    \toprule[1.5pt]
+   	\textbf{Archivo} 	& & \textbf{Tema} & & \textbf{Anexo} \\
+    \midrule[1.5pt]
+	0 Introducción 		& & Introducción a la tecnología JavaFX. && Anexo A (Pág. \pageref{appendix-a}) \\
+
+	1.1 Elementos de Interfaces Graficas 		& & Explicación de los Principales Componentes de una GUI. && Anexo B (Pág. \pageref{appendix-b}) \\
+	
+	1.2 Librerias de Interfaz Grafica		& & Presentación de las tres herramientas de Java para la creación GUIs. && Anexo C (Pág. \pageref{appendix-c}) \\
+	
+	1.3 Computacion Grafica		& & Introducción al método de gestión de gráficos y sus primitivas. && Anexo D (Pág. \pageref{appendix-d}) \\
+	
+	1.3 Computacion Grafica	-B	& & Ejemplos de uso de Canvas y primitivas Gráficas. && Anexo E (Pág. \pageref{appendix-e}) \\
+	
+	1.3 Computacion Grafica	-C	& & Ejemplo de uso de flujos de archivos para lectura y graficación de puntos. && Anexo F (Pág. \pageref{appendix-f}) \\
+	
+	1.4 Programación Orientada a Eventos	& & Explicación del equema de gestión de eventos de GUIs. && Anexo G (Pág. \pageref{appendix-g}) \\
+		
+    \bottomrule[1.5pt]
+    \end{tabular}
+\end{table} 
+
+\section{Códigos de Ejemplo}
+
+Todos los códigos de ejemplo de los temas explicados se incluyeron en tres proyectos de lenguaje Java creados con el IDE Netbeans.
+
+\chapter{Evidencias}
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.9\textwidth]{images/evidence-2}}
+\caption{Captura de pantalla de evidencia de la elaboración del material con el servidor social, victor Rebolloso, en pantalla.}
+\label{fig:chat-css}
+\end{figure} 
+
+\begin{figure}[!htbp] \centering \fboxsep=1mm
+\fbox{\includegraphics[width=0.9\textwidth]{images/evidence-3}}
+\caption{Captura de pantalla de evidencia de la apicaciones elaboradas con el servidor social, victor Rebolloso, en pantalla.}
+\label{fig:chat-css}
+\end{figure} 
+
+\chapter{Conclusiones}
+
+En relación a los objetivos planteados se concluye lo siguiente:
+
+\begin{itemize}
+\item El objetivo general propuesto para este trabajo se logró. Se obtuvo material didáctico que ofrece un acercamiento inicial al desarrollo de interfaces gráficas de usuario utilizando JavaFX.
+
+\item Se exploraron las nuevas funciones de JavaFX como la definición de GUIs con documentos FXML y la modificación de su apariencia mediante hojas de estilos CSS.
+
+\item Sólo un tema de los propuestos a cubrir quedó fuera, Arquitectura MVC, pues no se explicó a detalle en un documento independiente. Sin embargo, en algunos párrafos de los documentos Introducción y Elementos de Interfaces Gráficas se hace mención sobre la carácteristicas de JavaFX y cómo se adecúan en la arquitectura MVC. Además todos los códigos de programas de ejemplos se elaboraron siguiendo la división arquitectónica MVC.
+
+\item Se desarrollaron un conjunto de programas que ejemplifican los temas explicados en el material.
+
+\end{itemize}
+
+Y basado en la experiencia de este proyecto, a manera personal y expresado a modo de opinión, puedo concluir lo siguiente:
+
+\begin{itemize}
+\item La incorporación de tecnologías web con JavaFX es un paso en la dirección correcta para mejorar el paradigma actual de creación de interfaces de usuario. Éstas tecnologías favorecen al programador pues reducen el tiempo y la complejidad de desarrollo de aplicaciones haciendo sencillo emplear una arquitectura MVC.
+
+\item A pesar de que JavaFX es la tecnología más reciente para GUIs ofrecida por Oracle han pasado 3 años desde su lanzamiento y su popularidad entre los desarrolladores en comunidades de internet es mucho menor de lo que se puede esperar. Lo siguiente es una especulación pero su baja popularidad puede deberse a la reciente proliferación de frameworks como Node.js y electron con los que se pueden hacer aplicaciones de escritorio con tecnología Javascript, CSS y HTML con relativa facilidad.
+
+\item Considerando únicamente el espectro de herramientas ofrecidas para elaborar interfaces de usuario para Java, JavaFX es la mejor opción.
+\end{itemize}
+
+\chapter{Recomendaciones}
+
+Se presentan las siguientes recomendaciones para trabajos derivados de este proyecto:
+
+\begin{itemize}
+\item Incluir más ejemplos de creación de GUIs mediante documentos FXML.
+\item Incluir más ejemplos de modificación de la apariencia de GUIs mediante archivos CSS.
+\item Añadir a los temas de la primera unidad el uso de \verb|"|Binding Properties\verb|"|, un mecanismo que permite observar cambios en algún atributo de un objeto y realizar alguna acción en respuesta a esos cambios, además puede ser usado para simplificar la transmisión de datos introducidos por una vista hacia su clase modelo.
+\item Continuar con la actualización de las unidades 2, Programación Concurrente y 3, Programación Móvil. Para la última unidad se sugiere utilizar JavaFXPorts que es un proyecto Open Source que da soporte para Java y JavaFX en plataformas móviles (Android, IOS) y en hardware embebido (Raspberry Pi).
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{lamport94}
+  Hendrik Ebbers,
+  \textit{Mastering JavaFX 8 Controls},
+  Mc Graw Hill,
+  1ra Edición,
+  2014.
+  
+\bibitem{lamport94}
+  Carl P. Dea, Mark Heckler, et. al.,
+  \textit{JavaFX 8: Introduction by Example},
+  Apress, S.E, S.F.
+  
+ \bibitem{lamport94}
+  Johan Vos, Weiqi Gao, et. al.,
+  \textit{Pro JavaFX 8},
+  Apress, S.E, S.F.
+
+\bibitem{lamport94}
+  Jasper Potts, Nancy Hildebrandt, et. al.,
+  \textit{JavaFX: Getting Started with JavaFX Relase 8},
+  Oracle,
+  1ra Edición,
+  2014.
+  
+\bibitem{lamport94}
+  Lawrence PremKumar \& Praveen Mohan,
+  \textit{Beginning JavaFX},
+  Apress,
+  S.E,
+  2010.
+  
+\bibitem{lamport94}
+  Doug Lowe,
+  \textit{JavaFX for Dummies},
+  John Wiley \& Sons, Inc,
+  S.E,
+  2015.
+  
+\bibitem{lamport94}
+  Kim Topley,
+  \textit{JavaFX Developer's Guide},
+  Pearson Education,
+  S.E,
+  2011.
+
+\bibitem{lamport94}
+  Héctor Andrade, Victor Rebolloso,
+  \textit{Guía para el Desarrollo de Aplicaciones Web Responsivas Utilizando el Stack MEAN},
+  S.E,
+  2016.  
+  
+\bibitem{lamport94}
+  Tim Bray, Jean Paoli, et. al.,
+  \textit{Extensible Markup Language (XML) 1.0},
+  World Wide Web Consortium,
+  2008, recurperado de https://www.w3.org/TR/REC-xml/ el 19/07/2017.
+
+\bibitem{lamport94}
+  Tim Bray, Jean Paoli, et. al.,
+  \textit{Extensible Markup Language (XML) 1.0},
+  World Wide Web Consortium,
+  2008, recurperado de {\footnotesize https://www.w3.org/TR/REC-xml/} el 19/07/2017.
+  
+\bibitem{lamport94}
+  Oracle,
+  \textit{Introduction to FXML},
+  2013, recurperado de {\footnotesize https://docs.oracle.com/javase/8/javafx/api/javafx/fxml/doc-files/introduction\verb|_|to\verb|_|fxml.html} el 16/05/2017.
+
+\bibitem{lamport94}
+  Oracle,
+  \textit{JavaFX CSS Reference Guide}, recurperado de {\footnotesize http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html} el 02/06/2017.
+
+\bibitem{lamport94}
+  Gluon,
+  \textit{Web site JavaFXPorts}, recurperado de {\footnotesize http://gluonhq.com/products/mobile/javafxports/} el 20/07/2017.
+  
+  
+
+
+\end{thebibliography}
+
+
+\begin{appendices}
+\chapter{Introducción a JavaFX}
+\label{appendix-a}
+
+Los temas incluidos en este documento son:
+
+\begin{enumerate}
+\item Introducción a JavaFX
+\item Evolución de los GUI Toolkits
+\item Ventajas de JavaFX
+\item Arquitectura de JavaFX
+\item Scene Graph
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-a.pdf}
+
+\chapter{Elementos de Interfaces Gráficas}
+\label{appendix-b}
+\Large
+Los temas incluidos en este documento son:
+
+\begin{enumerate}
+\item Componentes Gráficos
+\item Contenedores Gráficos
+\item Administradores de Diseño
+\item Diseño de una Interface Gráfica
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-b.pdf}
+
+\chapter{Librerías de Interfaces Gráficas}
+\label{appendix-c}
+
+Los temas incluidos en este documento son:
+
+\begin{enumerate}
+\item Componentes Genéricos - AWT
+\item Contenedores Especializados - Swing
+\item Componentes de JavaFX
+\item Stage, Scene y Layouts
+\item Scene Builder y FXML
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-c.pdf}
+
+\chapter{Computación Gráfica 1}
+\label{appendix-d}
+Los temas incluidos en este documento son:
+
+\begin{enumerate}
+\item Esquema General de Elementos Gráficos
+\item Canvas
+\item Contexto Gráfico
+\item Primitivas Gráficas
+\item Texto e Imágenes
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-d.pdf}
+
+\chapter{Computación Gráfica 2}
+\label{appendix-e}
+
+Se presentan los ejemplos con primitivas gráficas.
+
+\begin{enumerate}
+\item Ejemplo para graficar un símbolo de peligro radioactivo.
+\item Ejemplo de un dibujo compuesto con varias primitivas.
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-e.pdf}
+
+\chapter{Computación Gráfica 3}
+\label{appendix-f}
+
+Se presentan un ejemplo del uso de flujos de archivos para lectura de puntos en el contexto gráfico y su posterior graficación formando un polígono.
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-f.pdf}
+
+\chapter{Programación Orientada a Eventos}
+\label{appendix-g}
+
+\begin{enumerate}
+\item Concepto de Evento
+\item Esquema de Gestión de Eventos
+\item Clasificación de Eventos
+\item Tipos de Oyentes de Eventos
+\item Registro de Oyentes
+\end{enumerate}
+
+\includepdf[pages=-, clip=0mm 0mm 0mm 0mm,frame,pagecommand={},width=1.2\textwidth]{anexo-g.pdf}
+
+\end{appendices}
+
+\end{document}

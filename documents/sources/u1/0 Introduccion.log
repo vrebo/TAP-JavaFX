@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.12)  23 JUN 2017 05:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.12)  13 AUG 2017 15:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,12 +658,18 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count116
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 96.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 96.
 
-[1
+Cap\'{\i }tulo 1.
+<images/gui-evolution.png, id=1, 552.0625pt x 488.82625pt>
+File: images/gui-evolution.png Graphic file (type png)
+
+<use images/gui-evolution.png>
+Package pdftex.def Info: images/gui-evolution.png used on input line 113.
+(pdftex.def)             Requested size: 386.73134pt x 342.44455pt.
+
+Underfull \vbox (badness 1286) has occurred while \output is active []
+
+ [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -673,35 +679,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2
-
-]
-Cap\'{\i }tulo 1.
-<images/gui-evolution.png, id=11, 552.0625pt x 488.82625pt>
-File: images/gui-evolution.png Graphic file (type png)
-
-<use images/gui-evolution.png>
-Package pdftex.def Info: images/gui-evolution.png used on input line 115.
-(pdftex.def)             Requested size: 386.73134pt x 342.44455pt.
-
-Underfull \vbox (badness 1286) has occurred while \output is active []
-
- [3]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4 <./images/gui-evolution.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
+[2 <./images/gui-evolution.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 146.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -709,18 +695,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5]
+[3]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6] <images/javafx-architecture.png, id=26, 395.19646pt x 102.3825pt>
+[4] <images/javafx-architecture.png, id=19, 395.19646pt x 102.3825pt>
 File: images/javafx-architecture.png Graphic file (type png)
 
 <use images/javafx-architecture.png>
-Package pdftex.def Info: images/javafx-architecture.png used on input line 248.
+Package pdftex.def Info: images/javafx-architecture.png used on input line 246.
 
 (pdftex.def)             Requested size: 435.06815pt x 112.71326pt.
 
@@ -730,18 +716,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 261.
+[5]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 259.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 262.
+(Font)              <8> on input line 260.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 262.
+(Font)              <6> on input line 260.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 262.
+(Font)              <5> on input line 260.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 274.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -749,32 +737,32 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8 <./images/javafx-architecture.png>]
+[6 <./images/javafx-architecture.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 306--308
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
  []
 
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 309.
-<images/first-app.png, id=41, 301.125pt x 225.84375pt>
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 307.
+<images/first-app.png, id=34, 301.125pt x 225.84375pt>
 File: images/first-app.png Graphic file (type png)
 
 <use images/first-app.png>
-Package pdftex.def Info: images/first-app.png used on input line 341.
+Package pdftex.def Info: images/first-app.png used on input line 339.
 (pdftex.def)             Requested size: 240.90031pt x 180.67523pt.
 
-<images/javafx-lifecycle.png, id=42, 418.56375pt x 347.8596pt>
+<images/javafx-lifecycle.png, id=35, 418.56375pt x 347.8596pt>
 File: images/javafx-lifecycle.png Graphic file (type png)
 
 <use images/javafx-lifecycle.png>
-Package pdftex.def Info: images/javafx-lifecycle.png used on input line 369.
+Package pdftex.def Info: images/javafx-lifecycle.png used on input line 367.
 (pdftex.def)             Requested size: 334.85144pt x 278.28806pt.
 
 
@@ -786,27 +774,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10]
+[8]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11 <./images/first-app.png>]
-<images/first-app-scene-graph.png, id=53, 365.9271pt x 271.7352pt>
+[9 <./images/first-app.png>]
+<images/first-app-scene-graph.png, id=46, 365.9271pt x 271.7352pt>
 File: images/first-app-scene-graph.png Graphic file (type png)
 
 <use images/first-app-scene-graph.png>
 Package pdftex.def Info: images/first-app-scene-graph.png used on input line 38
-8.
+6.
 (pdftex.def)             Requested size: 292.74207pt x 217.38843pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (28.83542pt too wide) in paragraph at lines 400--401
+Overfull \hbox (28.83542pt too wide) in paragraph at lines 398--399
 []\OT1/cmr/m/n/12 Invocar en el m^^Seto-do \OT1/cmr/m/it/12 main() \OT1/cmr/m/n
 /12 el m^^Seto-do \OT1/cmr/m/it/12 launch() \OT1/cmr/m/n/12 de la sub-cla-se de
  \OT1/cmr/m/it/12 ja-vafx.application.Application\OT1/cmr/m/n/12 . 
@@ -819,23 +807,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12 <./images/javafx-lifecycle.png>]
+[10 <./images/javafx-lifecycle.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13 <./images/first-app-scene-graph.png>] (./0 Introduccion.aux
+[11 <./images/first-app-scene-graph.png>] (./0 Introduccion.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 7088 strings out of 494891
- 98010 string characters out of 6179039
+ 7081 strings out of 494891
+ 97900 string characters out of 6179039
  220413 words of memory out of 5000000
- 10282 multiletter control sequences out of 15000+600000
- 10481 words of font info for 37 fonts, out of 8000000 for 9000
+ 10276 multiletter control sequences out of 15000+600000
+ 9567 words of font info for 34 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  38i,12n,43p,760b,1294s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texli
@@ -843,17 +831,16 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on "0 Introduccion.pdf" (13 pages, 521491 bytes).
+public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on "0 Introduccion.pdf" (11 pages, 510480 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
